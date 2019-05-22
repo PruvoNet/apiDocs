@@ -32,51 +32,11 @@ We may update the API without increasing the version number (i.e 2.1 2.2 etc…)
 
 # Common
 
-## Commonly accepted parameters and formats
-
 This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.
-
-Name | Format | Description | Example | Mandatory | Default | Comments
----------- | ------- | ------- | ------- | ------- | ------- | -------
-`uniqueId` | String | an identifier for correlating with your platform | `jsdf354-sdf5-lasdfasdUi` | True | | 
-`email` | Email String | account to import the reservation to | `a@a.com` | True | | 
-`currencyCode` | ISO-4217 String | booking currency | `EUR` | True | | 
-`price` | Number | total price (excluding taxes paid at the hotel) | `45.6` | True | | 
-`tax` | Number | taxes included in the price (excluding taxes paid at the hotel) | `12.6` | Optional | `0` |  
-`roomType` | String | name of the room | `Double standard` | True | |  
-`rooms` | Number | the number of rooms booked | `1` | True | |  
-`persons` | Number | the total number of persons in all the rooms | `2` | True | `0` | 
-`children` | Number | the total number of children in all rooms | `1` | True | `0` | 
-`arrivalDate` | MM/DD/YYYY | arrival date to the hotel | `05/25/2020` | True | | must be a future date
-`departureDate` | MM/DD/YYYY | departure date from the hotel | `05/27/2020` | True | | must be after `arrivalDate`
-`lastFreeCancelTime` | MM/DD/YYYY | the last date to cancel the booking for free. | `05/21/2020` | True | | must be before `arrivalDate`. Omit if not a free cancellation reservation
-`hotelName` | String | hotel name | `Main Hotel Budapest` | True | | 
-`mealPlan` | Number (<a href="#meal-plans">Enum</a>) | included meal plan | `1` | True | | 
-`address` | String | hotel street address | `24 Main street` | True | | 
-`city` | String | hotel city | `Paris` | True | | 
-`country` | String | hotel country | `France` | True | | 
-`latLong` | Geo String (`lat,long`) | geo location of the hotel | `1.9345345345,-2.3555533434` | True | | 
-`manageLink` | Url String | link to refer user to modify/cancel booking | `http://myBookingSite.com/reservation?id=1` | True | | 
-`thumbnail` | Url String | url to hotel picture | `http://cdn.my.site/myHotel.png` | Optional | | 
-`hotelLink` | Url String | link to hotel page in the site | `http://myBookingSite.com/myHotel.html` | Optional | | 
-`hotelCode` | String | the ean hotel code | `a123456` | Optional | | 
-`tripId` | String | the tripId provided to the user for this booking (used only when required by pruvo) | `b654321` | Optional | | 
-`custom` | String | custom data (used only when required by pruvo) | `aaa__sdfsdf_45` | Optional | | 
-
-
-<aside class="notice">
-price and tax paramters should be given in the `currencyCode` currency value.
-</aside>
-<aside class="notice">
-A single request represent a single booking information. It can contain multiple rooms, only if they are excatly identical
-</aside>
-<aside class="notice">
-(`persons` + `children`) / `rooms` must be a positive integer
-</aside>
 
 ## Meal Plans
 
-The `mealPlan` valid parameters are:
+The `mealPlan` valid enum values are:
 
  Value | Description
 ---------- | ------- 
@@ -111,7 +71,7 @@ Key | Value | Description | Example
 This section describes push and pixel end-points which are currently supported by our API.
 
 **Production Endpoint**  
-<a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings/</a>
+<a href='https://www.pruvo.net/api/PushBookings'>www.pruvo.net/api/PushBookings/</a>
 
 ## Push End-point
 
@@ -120,7 +80,7 @@ This section describes push and pixel end-points which are currently supported b
 ```shell
 curl -d '{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'\
  -H "Content-Type: application/json" -H "Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d" -H "API-Version	: 1.0" \
- -X POST https://www.pruvo.net/api/PushBookings/yourPushEndpoint
+ -X POST https://www.pruvo.net/api/PushBookings/yourEndpoint
 ```
 
 > Request body
@@ -158,20 +118,21 @@ Push end-point provides you with the ability to submit a booking for price monit
 
  | | 
 ---------- | -------  | ------- 
-**URL** | /yourPushEndpoint
+**URL** | /yourEndpoint
 **SCHEMA** | HTTPS
 **METHOD** | POST
 
+
 **Accepted parameters**
 
-Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section
+<%= partial "includes/params.md.erb" %>
 
 ## Pixel End-point
 
 > Request
 
 ```shell
-curl "https://www.pruvo.net/api/PushBookings/yourPixelEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&api-version=1.0&uniqueId=jsdf354-sdf5-lasdfasdUi&email=a%40a.com&custom=aaa__sdfsdf_45&price=45.6&tax=12.6&currencyCode=EUR&roomType=Double%20standard&rooms=1&persons=2&children=1&arrivalDate=05%2F25%2F2020&departureDate=05%2F27%2F2020&lastFreeCancelTime=05%2F21%2F2020&hotelName=Main%20Hotel%20Budapest&mealPlan=1&address=24%20Main%20street&city=Paris&country=France&latLong=32.78778%2C-79.93472&thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&hotelCode=a123456&tripId=b654321"
+curl "https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&api-version=1.0&uniqueId=jsdf354-sdf5-lasdfasdUi&email=a%40a.com&custom=aaa__sdfsdf_45&price=45.6&tax=12.6&currencyCode=EUR&roomType=Double%20standard&rooms=1&persons=2&children=1&arrivalDate=05%2F25%2F2020&departureDate=05%2F27%2F2020&lastFreeCancelTime=05%2F21%2F2020&hotelName=Main%20Hotel%20Budapest&mealPlan=1&address=24%20Main%20street&city=Paris&country=France&latLong=32.78778%2C-79.93472&thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&hotelCode=a123456&tripId=b654321"
 ```
 
 > Request query params
@@ -211,13 +172,14 @@ Pixel end-point provides you with the ability to submit a booking for price moni
 
  | | 
 ---------- | -------  | ------- 
-**URL** | /yourPixelEndpoint
+**URL** | /yourEndpoint
 **SCHEMA** | HTTPS
 **METHOD** | GET
 
+
 **Accepted parameters**
 
-Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section
+<%= partial "includes/params.md.erb" %>
 
 # Errors Handling
 

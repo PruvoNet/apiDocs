@@ -1,0 +1,36 @@
+Name | Format | Description | Example | Mandatory | Default | Comments
+---------- | ------- | ------- | ------- | ------- | ------- | -------
+`uniqueId` | String | an identifier for correlating with your platform | `jsdf354-sdf5-lasdfasdUi` | True | |
+`email` | Email String | account to import the reservation to | `a@a.com` | True | |
+`currencyCode` | ISO-4217 String | booking currency | `EUR` | True | |
+`price` | Number | total price (excluding taxes paid at the hotel) | `45.6` | True | |
+`tax` | Number | taxes included in the price (excluding taxes paid at the hotel) | `12.6` | Optional | `0` |
+`roomType` | String | name of the room | `Double standard` | True | |
+`rooms` | Number | the number of rooms booked | `1` | True | |
+`persons` | Number | the total number of persons in all the rooms | `2` | True | `0` |
+`children` | Number | the total number of children in all rooms | `1` | True | `0` |
+`arrivalDate` | MM/DD/YYYY | arrival date to the hotel | `05/25/2020` | True | | must be a future date
+`departureDate` | MM/DD/YYYY | departure date from the hotel | `05/27/2020` | True | | must be after `arrivalDate`
+`lastFreeCancelTime` | MM/DD/YYYY | the last date to cancel the booking for free. | `05/21/2020` | True | | must be before `arrivalDate`. Omit if not a free cancellation reservation
+`hotelName` | String | hotel name | `Main Hotel Budapest` | True | |
+`mealPlan` | Number (<a href="#meal-plans">Enum</a>) | included meal plan | `1` | True | |
+`address` | String | hotel street address | `24 Main street` | True | |
+`city` | String | hotel city | `Paris` | True | |
+`country` | String | hotel country | `France` | True | |
+`latLong` | Geo String (`lat,long`) | geo location of the hotel | `1.9345345345,-2.3555533434` | True | |
+`manageLink` | Url String | link to refer user to modify/cancel booking | `http://myBookingSite.com/reservation?id=1` | True | |
+`thumbnail` | Url String | url to hotel picture | `http://cdn.my.site/myHotel.png` | Optional | |
+`hotelLink` | Url String | link to hotel page in the site | `http://myBookingSite.com/myHotel.html` | Optional | |
+`hotelCode` | String | the ean hotel code | `a123456` | Optional | |
+`tripId` | String | the tripId provided to the user for this booking (used only when required by pruvo) | `b654321` | Optional | |
+`custom` | String | custom data (used only when required by pruvo) | `aaa__sdfsdf_45` | Optional | |
+
+<aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are exactly identical
+</aside>
+<aside class="notice">
+price and tax paramters should be given in the `currencyCode` currency value.
+</aside>
+<aside class="warning">
+(`persons` + `children`) / `rooms` must be a positive integer
+</aside>
