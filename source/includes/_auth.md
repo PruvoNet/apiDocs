@@ -16,5 +16,5 @@ If you prefer not to send the authorization data as headers, you can send them a
 Key | Value | Description | Example
 ---------- | ------- | ------- | ------- 
 `access_token` | Authorization Key | Key provided by Pruvo | `bf93c4e2-36d6-413c-aa86-46c1b108215d`
-`api-version` | Api Version | PI Version to use | `1.0` 
+`api_version` | Api Version | PI Version to use | `1.0` 
 
