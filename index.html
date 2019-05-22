@@ -2,10 +2,11 @@
 <!doctype html>
 <html>
   <head>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Pruvo Api Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,234 +211,567 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#request-data" class="toc-h2 toc-link" data-title="Request data">Request data</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#commonly-accepted-parameters-and-formats" class="toc-h2 toc-link" data-title="Commonly accepted parameters and formats">Commonly accepted parameters and formats</a>
+                  </li>
+                  <li>
+                    <a href="#meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
+          </li>
+          <li>
+            <a href="#end-points-overview" class="toc-h1 toc-link" data-title="End-points overview">End-points overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#push-end-point" class="toc-h2 toc-link" data-title="Push End-point">Push End-point</a>
+                  </li>
+                  <li>
+                    <a href="#pixel-end-point" class="toc-h2 toc-link" data-title="Pixel End-point">Pixel End-point</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors-handling" class="toc-h1 toc-link" data-title="Errors Handling">Errors Handling</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#error-response-structure" class="toc-h2 toc-link" data-title="Error Response Structure">Error Response Structure</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#support" class="toc-h1 toc-link" data-title="Support">Support</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://www.pruvo.net/business'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='overview'>Overview</h1><h2 id='abstract'>Abstract</h2>
+<p>This documentation defines the specifications of an API who’s responsibility is to provide access to Pruvo’s unique price monitoring capabilities.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Current API version: 1.0</p>
+<h2 id='request-data'>Request data</h2>
+<ul>
+<li>Every string passed to/from API has to be UTF-8 encoded</li>
+<li>Support for SNI SSL is required</li>
+</ul>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM limit is 50.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='versioning'>Versioning</h2>
+<p>We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.</p>
+<h1 id='common'>Common</h1><h2 id='commonly-accepted-parameters-and-formats'>Commonly accepted parameters and formats</h2>
+<p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Example</th>
+<th>Mandatory</th>
 <th>Default</th>
-<th>Description</th>
+<th>Comments</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code>uniqueId</code></td>
+<td>String</td>
+<td>an identifier for correlating with your platform</td>
+<td><code>jsdf354-sdf5-lasdfasdUi</code></td>
+<td>True</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code>email</code></td>
+<td>Email String</td>
+<td>account to import the reservation to</td>
+<td><code>a@a.com</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td>ISO-4217 String</td>
+<td>booking currency</td>
+<td><code>EUR</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>Number</td>
+<td>total price (excluding taxes paid at the hotel)</td>
+<td><code>45.6</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tax</code></td>
+<td>Number</td>
+<td>taxes included in the price (excluding taxes paid at the hotel)</td>
+<td><code>12.6</code></td>
+<td>Optional</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>roomType</code></td>
+<td>String</td>
+<td>name of the room</td>
+<td><code>Double standard</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>rooms</code></td>
+<td>Number</td>
+<td>the number of rooms booked</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>persons</code></td>
+<td>Number</td>
+<td>the total number of persons in all the rooms</td>
+<td><code>2</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>Number</td>
+<td>the total number of children in all rooms</td>
+<td><code>1</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrivalDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>arrival date to the hotel</td>
+<td><code>05/25/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be a future date</td>
+</tr>
+<tr>
+<td><code>departureDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>departure date from the hotel</td>
+<td><code>05/27/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be after <code>arrivalDate</code></td>
+</tr>
+<tr>
+<td><code>lastFreeCancelTime</code></td>
+<td>MM/DD/YYYY</td>
+<td>the last date to cancel the booking for free.</td>
+<td><code>05/21/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be before <code>arrivalDate</code>. Omit if not a free cancellation reservation</td>
+</tr>
+<tr>
+<td><code>hotelName</code></td>
+<td>String</td>
+<td>hotel name</td>
+<td><code>Main Hotel Budapest</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mealPlan</code></td>
+<td>Number (<a href="#meal-plans">Enum</a>)</td>
+<td>included meal plan</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>String</td>
+<td>hotel street address</td>
+<td><code>24 Main street</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>String</td>
+<td>hotel city</td>
+<td><code>Paris</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>String</td>
+<td>hotel country</td>
+<td><code>France</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>latLong</code></td>
+<td>Geo String (<code>lat,long</code>)</td>
+<td>geo location of the hotel</td>
+<td><code>1.9345345345,-2.3555533434</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>manageLink</code></td>
+<td>Url String</td>
+<td>link to refer user to modify/cancel booking</td>
+<td><code>http://myBookingSite.com/reservation?id=1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>Url String</td>
+<td>url to hotel picture</td>
+<td><code>http://cdn.my.site/myHotel.png</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelLink</code></td>
+<td>Url String</td>
+<td>link to hotel page in the site</td>
+<td><code>http://myBookingSite.com/myHotel.html</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelCode</code></td>
+<td>String</td>
+<td>the ean hotel code</td>
+<td><code>a123456</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tripId</code></td>
+<td>String</td>
+<td>the tripId provided to the user for this booking (used only when required by pruvo)</td>
+<td><code>b654321</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td>String</td>
+<td>custom data (used only when required by pruvo)</td>
+<td><code>aaa__sdfsdf_45</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+price and tax paramters should be given in the `currencyCode` currency value.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are excatly identical
+</aside>
+
+<aside class="notice">
+(`persons` + `children`) / `rooms` must be a positive integer
+</aside>
+<h2 id='meal-plans'>Meal Plans</h2>
+<p>The <code>mealPlan</code> valid parameters are:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>no meal plan</td>
+</tr>
+<tr>
+<td>1</td>
+<td>breakfast</td>
+</tr>
+<tr>
+<td>2</td>
+<td>half board</td>
+</tr>
+<tr>
+<td>3</td>
+<td>all inclusive</td>
+</tr>
+<tr>
+<td>4</td>
+<td>full board</td>
+</tr>
+</tbody></table>
+<h1 id='authorization'>Authorization</h1>
+<p>This section describes the authorization process.</p>
+
+<p>Every request to any available endpoint requires authorization. To get the authorization credentials you need an active partner account registered within Pruvo’s systems.</p>
+
+<p>The following table details the required headers that must be sent with each request.</p>
+
+<table><thead>
+<tr>
+<th>Header key</th>
+<th>Header value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>Authorization Key</td>
+<td>Key provided by Pruvo</td>
+<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
+</tr>
+<tr>
+<td><code>API-Version</code></td>
+<td>Api Version</td>
+<td>PI Version to use</td>
+<td><code>1.0</code></td>
+</tr>
+</tbody></table>
+
+<p>If you prefer not to send the authorization data as headers, you can send them as query paramters:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code></td>
+<td>Authorization Key</td>
+<td>Key provided by Pruvo</td>
+<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
+</tr>
+<tr>
+<td><code>api-version</code></td>
+<td>Api Version</td>
+<td>PI Version to use</td>
+<td><code>1.0</code></td>
+</tr>
+</tbody></table>
+<h1 id='end-points-overview'>End-points overview</h1>
+<p>This section describes push and pixel end-points which are currently supported by our API.</p>
+
+<p><strong>Production Endpoint</strong><br>
+<a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings/</a></p>
+<h2 id='push-end-point'>Push End-point</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -d <span class="s1">'{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'</span><span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d"</span> -H <span class="s2">"API-Version   : 1.0"</span> <span class="se">\</span>
+ -X POST https://www.pruvo.net/api/PushBookings/yourPushEndpoint
+</code></pre>
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Push end-point provides you with the ability to submit a booking for price monitoring.</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>/yourPushEndpoint</td>
+</tr>
+<tr>
+<td><strong>SCHEMA</strong></td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><strong>METHOD</strong></td>
+<td>POST</td>
+</tr>
+</tbody></table>
+
+<p><strong>Accepted parameters</strong></p>
+
+<p>Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section</p>
+<h2 id='pixel-end-point'>Pixel End-point</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourPixelEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api-version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
+</code></pre>
+<blockquote>
+<p>Request query params</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf93c4e2-36d6-413c-aa86-46c1b108215d"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Notice we passed the authorization headers in the query paramters</span><span class="w">
+  </span><span class="s2">"api-version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Pixel end-point provides you with the ability to submit a booking for price monitoring using GET method.</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>/yourPixelEndpoint</td>
+</tr>
+<tr>
+<td><strong>SCHEMA</strong></td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><strong>METHOD</strong></td>
+<td>GET</td>
+</tr>
+</tbody></table>
+
+<p><strong>Accepted parameters</strong></p>
+
+<p>Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section</p>
+<h1 id='errors-handling'>Errors Handling</h1><h2 id='error-response-structure'>Error Response Structure</h2>
+<p>All 400 errors encountered during request will render the same error structure.</p>
+
+<blockquote>
+<p>400 Error Response Structure</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request data validation error"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span><span class="p">,</span><span class="w"> </span><span class="c1">// The condition that failed</span><span class="w">
+                </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"hotelName"</span><span class="w"> </span><span class="c1">// parameter that caused an error</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>The API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -447,23 +781,23 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request --    The request cannot be fulfilled due to bad syntax.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized -- The end-point requested is not allowed.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The end-point requested is not allowed.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The end-point requested could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access an end-point with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -471,15 +805,11 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Gone -- The request end-point requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re making too many requests! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -490,15 +820,14 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h1 id='support'>Support</h1>
+<ul>
+<li>Send all support questions and issues to dev@pruvo.net</li>
+<li>In your support inquiry, please be sure to include the request, response, and timestamp (UTC)</li>
+</ul>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
