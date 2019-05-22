@@ -210,7 +210,9 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <a href="http://www.pruvo.com/" target="_blank">
+        <img src="images/logo.png" class="logo" alt="Logo" />
+      </a>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -233,9 +235,6 @@
           <li>
             <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#commonly-accepted-parameters-and-formats" class="toc-h2 toc-link" data-title="Commonly accepted parameters and formats">Commonly accepted parameters and formats</a>
-                  </li>
                   <li>
                     <a href="#meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
                   </li>
@@ -291,8 +290,162 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </aside>
 <h2 id='versioning'>Versioning</h2>
 <p>We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.</p>
-<h1 id='common'>Common</h1><h2 id='commonly-accepted-parameters-and-formats'>Commonly accepted parameters and formats</h2>
+<h1 id='common'>Common</h1>
 <p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
+<h2 id='meal-plans'>Meal Plans</h2>
+<p>The <code>mealPlan</code> valid enum values are:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>no meal plan</td>
+</tr>
+<tr>
+<td>1</td>
+<td>breakfast</td>
+</tr>
+<tr>
+<td>2</td>
+<td>half board</td>
+</tr>
+<tr>
+<td>3</td>
+<td>all inclusive</td>
+</tr>
+<tr>
+<td>4</td>
+<td>full board</td>
+</tr>
+</tbody></table>
+<h1 id='authorization'>Authorization</h1>
+<p>This section describes the authorization process.</p>
+
+<p>Every request to any available endpoint requires authorization. To get the authorization credentials you need an active partner account registered within Pruvo’s systems.</p>
+
+<p>The following table details the required headers that must be sent with each request.</p>
+
+<table><thead>
+<tr>
+<th>Header key</th>
+<th>Header value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>Authorization Key</td>
+<td>Key provided by Pruvo</td>
+<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
+</tr>
+<tr>
+<td><code>API-Version</code></td>
+<td>Api Version</td>
+<td>PI Version to use</td>
+<td><code>1.0</code></td>
+</tr>
+</tbody></table>
+
+<p>If you prefer not to send the authorization data as headers, you can send them as query paramters:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code></td>
+<td>Authorization Key</td>
+<td>Key provided by Pruvo</td>
+<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
+</tr>
+<tr>
+<td><code>api-version</code></td>
+<td>Api Version</td>
+<td>PI Version to use</td>
+<td><code>1.0</code></td>
+</tr>
+</tbody></table>
+<h1 id='end-points-overview'>End-points overview</h1>
+<p>This section describes push and pixel end-points which are currently supported by our API.</p>
+
+<p><strong>Production Endpoint</strong>
+<a href='https://www.pruvo.net/api/PushBookings'>www.pruvo.net/api/PushBookings/</a></p>
+
+<h2 id='push-end-point'>Push End-point</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code>curl -d <span class="s1">'{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'</span><span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d"</span> -H <span class="s2">"API-Version   : 1.0"</span> <span class="se">\</span>
+ -X POST https://www.pruvo.net/api/PushBookings/yourEndpoint
+</code></pre>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Push end-point provides you with the ability to submit a booking for price monitoring.</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>/yourEndpoint</td>
+</tr>
+<tr>
+<td><strong>SCHEMA</strong></td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><strong>METHOD</strong></td>
+<td>POST</td>
+</tr>
+</tbody></table>
+
+<p><strong>Accepted parameters</strong></p>
 
 <table><thead>
 <tr>
@@ -524,175 +677,30 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </tbody></table>
 
 <aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are exactly identical
+</aside>
+
+<aside class="notice">
 price and tax paramters should be given in the `currencyCode` currency value.
 </aside>
 
-<aside class="notice">
-A single request represent a single booking information. It can contain multiple rooms, only if they are excatly identical
-</aside>
-
-<aside class="notice">
+<aside class="warning">
 (`persons` + `children`) / `rooms` must be a positive integer
 </aside>
-<h2 id='meal-plans'>Meal Plans</h2>
-<p>The <code>mealPlan</code> valid parameters are:</p>
 
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>no meal plan</td>
-</tr>
-<tr>
-<td>1</td>
-<td>breakfast</td>
-</tr>
-<tr>
-<td>2</td>
-<td>half board</td>
-</tr>
-<tr>
-<td>3</td>
-<td>all inclusive</td>
-</tr>
-<tr>
-<td>4</td>
-<td>full board</td>
-</tr>
-</tbody></table>
-<h1 id='authorization'>Authorization</h1>
-<p>This section describes the authorization process.</p>
-
-<p>Every request to any available endpoint requires authorization. To get the authorization credentials you need an active partner account registered within Pruvo’s systems.</p>
-
-<p>The following table details the required headers that must be sent with each request.</p>
-
-<table><thead>
-<tr>
-<th>Header key</th>
-<th>Header value</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>Authorization</code></td>
-<td>Authorization Key</td>
-<td>Key provided by Pruvo</td>
-<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
-</tr>
-<tr>
-<td><code>API-Version</code></td>
-<td>Api Version</td>
-<td>PI Version to use</td>
-<td><code>1.0</code></td>
-</tr>
-</tbody></table>
-
-<p>If you prefer not to send the authorization data as headers, you can send them as query paramters:</p>
-
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code></td>
-<td>Authorization Key</td>
-<td>Key provided by Pruvo</td>
-<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
-</tr>
-<tr>
-<td><code>api-version</code></td>
-<td>Api Version</td>
-<td>PI Version to use</td>
-<td><code>1.0</code></td>
-</tr>
-</tbody></table>
-<h1 id='end-points-overview'>End-points overview</h1>
-<p>This section describes push and pixel end-points which are currently supported by our API.</p>
-
-<p><strong>Production Endpoint</strong><br>
-<a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings/</a></p>
-<h2 id='push-end-point'>Push End-point</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -d <span class="s1">'{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'</span><span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d"</span> -H <span class="s2">"API-Version   : 1.0"</span> <span class="se">\</span>
- -X POST https://www.pruvo.net/api/PushBookings/yourPushEndpoint
-</code></pre>
-<blockquote>
-<p>Request body</p>
-</blockquote>
-<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Push end-point provides you with the ability to submit a booking for price monitoring.</p>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>URL</strong></td>
-<td>/yourPushEndpoint</td>
-</tr>
-<tr>
-<td><strong>SCHEMA</strong></td>
-<td>HTTPS</td>
-</tr>
-<tr>
-<td><strong>METHOD</strong></td>
-<td>POST</td>
-</tr>
-</tbody></table>
-
-<p><strong>Accepted parameters</strong></p>
-
-<p>Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section</p>
 <h2 id='pixel-end-point'>Pixel End-point</h2>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourPixelEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api-version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
+
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api-version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
 </code></pre>
+
 <blockquote>
 <p>Request query params</p>
 </blockquote>
+
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf93c4e2-36d6-413c-aa86-46c1b108215d"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Notice we passed the authorization headers in the query paramters</span><span class="w">
   </span><span class="s2">"api-version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
@@ -722,6 +730,7 @@ A single request represent a single booking information. It can contain multiple
   </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <p>Pixel end-point provides you with the ability to submit a booking for price monitoring using GET method.</p>
 
 <table><thead>
@@ -732,7 +741,7 @@ A single request represent a single booking information. It can contain multiple
 </thead><tbody>
 <tr>
 <td><strong>URL</strong></td>
-<td>/yourPixelEndpoint</td>
+<td>/yourEndpoint</td>
 </tr>
 <tr>
 <td><strong>SCHEMA</strong></td>
@@ -746,7 +755,246 @@ A single request represent a single booking information. It can contain multiple
 
 <p><strong>Accepted parameters</strong></p>
 
-<p>Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Example</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>uniqueId</code></td>
+<td>String</td>
+<td>an identifier for correlating with your platform</td>
+<td><code>jsdf354-sdf5-lasdfasdUi</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email String</td>
+<td>account to import the reservation to</td>
+<td><code>a@a.com</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td>ISO-4217 String</td>
+<td>booking currency</td>
+<td><code>EUR</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>Number</td>
+<td>total price (excluding taxes paid at the hotel)</td>
+<td><code>45.6</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tax</code></td>
+<td>Number</td>
+<td>taxes included in the price (excluding taxes paid at the hotel)</td>
+<td><code>12.6</code></td>
+<td>Optional</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>roomType</code></td>
+<td>String</td>
+<td>name of the room</td>
+<td><code>Double standard</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>rooms</code></td>
+<td>Number</td>
+<td>the number of rooms booked</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>persons</code></td>
+<td>Number</td>
+<td>the total number of persons in all the rooms</td>
+<td><code>2</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>Number</td>
+<td>the total number of children in all rooms</td>
+<td><code>1</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrivalDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>arrival date to the hotel</td>
+<td><code>05/25/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be a future date</td>
+</tr>
+<tr>
+<td><code>departureDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>departure date from the hotel</td>
+<td><code>05/27/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be after <code>arrivalDate</code></td>
+</tr>
+<tr>
+<td><code>lastFreeCancelTime</code></td>
+<td>MM/DD/YYYY</td>
+<td>the last date to cancel the booking for free.</td>
+<td><code>05/21/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be before <code>arrivalDate</code>. Omit if not a free cancellation reservation</td>
+</tr>
+<tr>
+<td><code>hotelName</code></td>
+<td>String</td>
+<td>hotel name</td>
+<td><code>Main Hotel Budapest</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mealPlan</code></td>
+<td>Number (<a href="#meal-plans">Enum</a>)</td>
+<td>included meal plan</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>String</td>
+<td>hotel street address</td>
+<td><code>24 Main street</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>String</td>
+<td>hotel city</td>
+<td><code>Paris</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>String</td>
+<td>hotel country</td>
+<td><code>France</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>latLong</code></td>
+<td>Geo String (<code>lat,long</code>)</td>
+<td>geo location of the hotel</td>
+<td><code>1.9345345345,-2.3555533434</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>manageLink</code></td>
+<td>Url String</td>
+<td>link to refer user to modify/cancel booking</td>
+<td><code>http://myBookingSite.com/reservation?id=1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>Url String</td>
+<td>url to hotel picture</td>
+<td><code>http://cdn.my.site/myHotel.png</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelLink</code></td>
+<td>Url String</td>
+<td>link to hotel page in the site</td>
+<td><code>http://myBookingSite.com/myHotel.html</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelCode</code></td>
+<td>String</td>
+<td>the ean hotel code</td>
+<td><code>a123456</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tripId</code></td>
+<td>String</td>
+<td>the tripId provided to the user for this booking (used only when required by pruvo)</td>
+<td><code>b654321</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td>String</td>
+<td>custom data (used only when required by pruvo)</td>
+<td><code>aaa__sdfsdf_45</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are exactly identical
+</aside>
+
+<aside class="notice">
+price and tax paramters should be given in the `currencyCode` currency value.
+</aside>
+
+<aside class="warning">
+(`persons` + `children`) / `rooms` must be a positive integer
+</aside>
 <h1 id='errors-handling'>Errors Handling</h1><h2 id='error-response-structure'>Error Response Structure</h2>
 <p>All 400 errors encountered during request will render the same error structure.</p>
 
@@ -822,7 +1070,7 @@ A single request represent a single booking information. It can contain multiple
 </tbody></table>
 <h1 id='support'>Support</h1>
 <ul>
-<li>Send all support questions and issues to dev@pruvo.net</li>
+<li>Send all support questions and issues to <a href="mailto:dev@pruvo.net">dev@pruvo.net</a></li>
 <li>In your support inquiry, please be sure to include the request, response, and timestamp (UTC)</li>
 </ul>
 

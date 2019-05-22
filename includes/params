@@ -1,0 +1,240 @@
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Example</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>uniqueId</code></td>
+<td>String</td>
+<td>an identifier for correlating with your platform</td>
+<td><code>jsdf354-sdf5-lasdfasdUi</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email String</td>
+<td>account to import the reservation to</td>
+<td><code>a@a.com</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td>ISO-4217 String</td>
+<td>booking currency</td>
+<td><code>EUR</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>Number</td>
+<td>total price (excluding taxes paid at the hotel)</td>
+<td><code>45.6</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tax</code></td>
+<td>Number</td>
+<td>taxes included in the price (excluding taxes paid at the hotel)</td>
+<td><code>12.6</code></td>
+<td>Optional</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>roomType</code></td>
+<td>String</td>
+<td>name of the room</td>
+<td><code>Double standard</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>rooms</code></td>
+<td>Number</td>
+<td>the number of rooms booked</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>persons</code></td>
+<td>Number</td>
+<td>the total number of persons in all the rooms</td>
+<td><code>2</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>Number</td>
+<td>the total number of children in all rooms</td>
+<td><code>1</code></td>
+<td>True</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>arrivalDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>arrival date to the hotel</td>
+<td><code>05/25/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be a future date</td>
+</tr>
+<tr>
+<td><code>departureDate</code></td>
+<td>MM/DD/YYYY</td>
+<td>departure date from the hotel</td>
+<td><code>05/27/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be after <code>arrivalDate</code></td>
+</tr>
+<tr>
+<td><code>lastFreeCancelTime</code></td>
+<td>MM/DD/YYYY</td>
+<td>the last date to cancel the booking for free.</td>
+<td><code>05/21/2020</code></td>
+<td>True</td>
+<td></td>
+<td>must be before <code>arrivalDate</code>. Omit if not a free cancellation reservation</td>
+</tr>
+<tr>
+<td><code>hotelName</code></td>
+<td>String</td>
+<td>hotel name</td>
+<td><code>Main Hotel Budapest</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mealPlan</code></td>
+<td>Number (<a href="#meal-plans">Enum</a>)</td>
+<td>included meal plan</td>
+<td><code>1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>String</td>
+<td>hotel street address</td>
+<td><code>24 Main street</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>String</td>
+<td>hotel city</td>
+<td><code>Paris</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>String</td>
+<td>hotel country</td>
+<td><code>France</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>latLong</code></td>
+<td>Geo String (<code>lat,long</code>)</td>
+<td>geo location of the hotel</td>
+<td><code>1.9345345345,-2.3555533434</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>manageLink</code></td>
+<td>Url String</td>
+<td>link to refer user to modify/cancel booking</td>
+<td><code>http://myBookingSite.com/reservation?id=1</code></td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>Url String</td>
+<td>url to hotel picture</td>
+<td><code>http://cdn.my.site/myHotel.png</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelLink</code></td>
+<td>Url String</td>
+<td>link to hotel page in the site</td>
+<td><code>http://myBookingSite.com/myHotel.html</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hotelCode</code></td>
+<td>String</td>
+<td>the ean hotel code</td>
+<td><code>a123456</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tripId</code></td>
+<td>String</td>
+<td>the tripId provided to the user for this booking (used only when required by pruvo)</td>
+<td><code>b654321</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td>String</td>
+<td>custom data (used only when required by pruvo)</td>
+<td><code>aaa__sdfsdf_45</code></td>
+<td>Optional</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are exactly identical
+</aside>
+
+<aside class="notice">
+price and tax paramters should be given in the `currencyCode` currency value.
+</aside>
+
+<aside class="warning">
+(`persons` + `children`) / `rooms` must be a positive integer
+</aside>
