@@ -2,14 +2,14 @@
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api-version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api_version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
 </code></pre>
 <blockquote>
 <p>Request query params</p>
 </blockquote>
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf93c4e2-36d6-413c-aa86-46c1b108215d"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Notice we passed the authorization headers in the query paramters</span><span class="w">
-  </span><span class="s2">"api-version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
