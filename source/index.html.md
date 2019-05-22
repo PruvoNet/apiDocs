@@ -1,239 +1,268 @@
 ---
-title: API Reference
-
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+title: Pruvo Api Documentation
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+  - <a href='https://www.pruvo.net/business'>Sign Up for a Developer Key</a>
 
 search: true
 ---
 
-# Introduction
+# Overview
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+## Abstract
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+This documentation defines the specifications of an API who’s responsibility is to provide access to Pruvo’s unique price monitoring capabilities.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.
 
-# Authentication
+Current API version: 1.0
 
-> To authorize, use this code:
+## Request data
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+- Every string passed to/from API has to be UTF-8 encoded
+- Support for SNI SSL is required
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM limit is 50.
 </aside>
 
-# Kittens
+## Versioning
 
-## Get All Kittens
+We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.
 
-```ruby
-require 'kittn'
+# Common
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+## Commonly accepted parameters and formats
 
-```python
-import kittn
+This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+Name | Format | Description | Example | Mandatory | Default | Comments
+---------- | ------- | ------- | ------- | ------- | ------- | -------
+`uniqueId` | String | an identifier for correlating with your platform | `jsdf354-sdf5-lasdfasdUi` | True | | 
+`email` | Email String | account to import the reservation to | `a@a.com` | True | | 
+`currencyCode` | ISO-4217 String | booking currency | `EUR` | True | | 
+`price` | Number | total price (excluding taxes paid at the hotel) | `45.6` | True | | 
+`tax` | Number | taxes included in the price (excluding taxes paid at the hotel) | `12.6` | Optional | `0` |  
+`roomType` | String | name of the room | `Double standard` | True | |  
+`rooms` | Number | the number of rooms booked | `1` | True | |  
+`persons` | Number | the total number of persons in all the rooms | `2` | True | `0` | 
+`children` | Number | the total number of children in all rooms | `1` | True | `0` | 
+`arrivalDate` | MM/DD/YYYY | arrival date to the hotel | `05/25/2020` | True | | must be a future date
+`departureDate` | MM/DD/YYYY | departure date from the hotel | `05/27/2020` | True | | must be after `arrivalDate`
+`lastFreeCancelTime` | MM/DD/YYYY | the last date to cancel the booking for free. | `05/21/2020` | True | | must be before `arrivalDate`. Omit if not a free cancellation reservation
+`hotelName` | String | hotel name | `Main Hotel Budapest` | True | | 
+`mealPlan` | Number (<a href="#meal-plans">Enum</a>) | included meal plan | `1` | True | | 
+`address` | String | hotel street address | `24 Main street` | True | | 
+`city` | String | hotel city | `Paris` | True | | 
+`country` | String | hotel country | `France` | True | | 
+`latLong` | Geo String (`lat,long`) | geo location of the hotel | `1.9345345345,-2.3555533434` | True | | 
+`manageLink` | Url String | link to refer user to modify/cancel booking | `http://myBookingSite.com/reservation?id=1` | True | | 
+`thumbnail` | Url String | url to hotel picture | `http://cdn.my.site/myHotel.png` | Optional | | 
+`hotelLink` | Url String | link to hotel page in the site | `http://myBookingSite.com/myHotel.html` | Optional | | 
+`hotelCode` | String | the ean hotel code | `a123456` | Optional | | 
+`tripId` | String | the tripId provided to the user for this booking (used only when required by pruvo) | `b654321` | Optional | | 
+`custom` | String | custom data (used only when required by pruvo) | `aaa__sdfsdf_45` | Optional | | 
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+price and tax paramters should be given in the `currencyCode` currency value.
+</aside>
+<aside class="notice">
+A single request represent a single booking information. It can contain multiple rooms, only if they are excatly identical
+</aside>
+<aside class="notice">
+(`persons` + `children`) / `rooms` must be a positive integer
 </aside>
 
-## Get a Specific Kitten
+## Meal Plans
 
-```ruby
-require 'kittn'
+The `mealPlan` valid parameters are:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+ Value | Description
+---------- | ------- 
+0 | no meal plan
+1 | breakfast
+2 | half board
+3 | all inclusive
+4 | full board
 
-```python
-import kittn
+# Authorization
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+This section describes the authorization process.
+
+Every request to any available endpoint requires authorization. To get the authorization credentials you need an active partner account registered within Pruvo’s systems.
+
+The following table details the required headers that must be sent with each request.
+
+Header key | Header value | Description | Example
+---------- | ------- | ------- | ------- 
+`Authorization` | Authorization Key | Key provided by Pruvo | `bf93c4e2-36d6-413c-aa86-46c1b108215d`
+`API-Version` | Api Version | PI Version to use | `1.0` 
+
+If you prefer not to send the authorization data as headers, you can send them as query paramters:
+
+Key | Value | Description | Example
+---------- | ------- | ------- | ------- 
+`access_token` | Authorization Key | Key provided by Pruvo | `bf93c4e2-36d6-413c-aa86-46c1b108215d`
+`api-version` | Api Version | PI Version to use | `1.0` 
+
+# End-points overview
+
+This section describes push and pixel end-points which are currently supported by our API.
+
+**Production Endpoint**  
+<a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings/</a>
+
+## Push End-point
+
+> Request
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -d '{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'\
+ -H "Content-Type: application/json" -H "Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d" -H "API-Version	: 1.0" \
+ -X POST https://www.pruvo.net/api/PushBookings/yourPushEndpoint
 ```
 
-```javascript
-const kittn = require('kittn');
+> Request body
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
+```json-doc
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "uniqueId": "jsdf354-sdf5-lasdfasdUi",
+  "email": "a@a.com",
+  "custom": "aaa__sdfsdf_45",
+  "price": 45.6,
+  "tax": 12.6,
+  "currencyCode": "EUR",
+  "roomType": "Double standard",
+  "rooms": 1,
+  "persons": 2,
+  "children": 1,
+  "arrivalDate": "05/25/2020",
+  "departureDate": "05/27/2020",
+  "lastFreeCancelTime": "05/21/2020",
+  "hotelName": "Main Hotel Budapest",
+  "mealPlan": 1,
+  "address": "24 Main street",
+  "city": "Paris",
+  "country": "France",
+  "latLong": "32.78778,-79.93472",
+  "thumbnail": "http://cdn.my.site/myHotel.png",
+  "manageLink": "http://myBookingSite.com/reservation?id=1",
+  "hotelLink": "http://myBookingSite.com/myHotel.html",
+  "hotelCode": "a123456",
+  "tripId": "b654321"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+Push end-point provides you with the ability to submit a booking for price monitoring.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+ | | 
+---------- | -------  | ------- 
+**URL** | /yourPushEndpoint
+**SCHEMA** | HTTPS
+**METHOD** | POST
 
-### HTTP Request
+**Accepted parameters**
 
-`GET http://example.com/kittens/<ID>`
+Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section
 
-### URL Parameters
+## Pixel End-point
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+> Request
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl "https://www.pruvo.net/api/PushBookings/yourPixelEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&api-version=1.0&uniqueId=jsdf354-sdf5-lasdfasdUi&email=a%40a.com&custom=aaa__sdfsdf_45&price=45.6&tax=12.6&currencyCode=EUR&roomType=Double%20standard&rooms=1&persons=2&children=1&arrivalDate=05%2F25%2F2020&departureDate=05%2F27%2F2020&lastFreeCancelTime=05%2F21%2F2020&hotelName=Main%20Hotel%20Budapest&mealPlan=1&address=24%20Main%20street&city=Paris&country=France&latLong=32.78778%2C-79.93472&thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&hotelCode=a123456&tripId=b654321"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Request query params
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
+```json-doc
 {
-  "id": 2,
-  "deleted" : ":("
+  "access_token": "bf93c4e2-36d6-413c-aa86-46c1b108215d", // Notice we passed the authorization headers in the query paramters
+  "api-version": "1.0",
+  "uniqueId": "jsdf354-sdf5-lasdfasdUi",
+  "email": "a@a.com",
+  "custom": "aaa__sdfsdf_45",
+  "price": 45.6,
+  "tax": 12.6,
+  "currencyCode": "EUR",
+  "roomType": "Double standard",
+  "rooms": 1,
+  "persons": 2,
+  "children": 1,
+  "arrivalDate": "05/25/2020",
+  "departureDate": "05/27/2020",
+  "lastFreeCancelTime": "05/21/2020",
+  "hotelName": "Main Hotel Budapest",
+  "mealPlan": 1,
+  "address": "24 Main street",
+  "city": "Paris",
+  "country": "France",
+  "latLong": "32.78778,-79.93472",
+  "thumbnail": "http://cdn.my.site/myHotel.png",
+  "manageLink": "http://myBookingSite.com/reservation?id=1",
+  "hotelLink": "http://myBookingSite.com/myHotel.html",
+  "hotelCode": "a123456",
+  "tripId": "b654321"
 }
 ```
 
-This endpoint deletes a specific kitten.
+Pixel end-point provides you with the ability to submit a booking for price monitoring using GET method.
 
-### HTTP Request
+ | | 
+---------- | -------  | ------- 
+**URL** | /yourPixelEndpoint
+**SCHEMA** | HTTPS
+**METHOD** | GET
 
-`DELETE http://example.com/kittens/<ID>`
+**Accepted parameters**
 
-### URL Parameters
+Refer to <a href="#commonly-accepted-parameters-and-formats">Common</a> section
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+# Errors Handling
 
+## Error Response Structure
+
+All 400 errors encountered during request will render the same error structure.
+
+> 400 Error Response Structure
+
+```json-doc
+
+{
+    "error": {
+        "name": "Error",
+        "status": 400,
+        "message": "Request data validation error",
+        "errors": [
+            {
+                "failed": "required", // The condition that failed
+                "path": [
+                    "hotelName" // parameter that caused an error
+                ]
+            }
+        ]
+    }
+}
+
+```
+
+The API uses the following error codes:
+
+Error Code | Meaning
+---------- | -------
+400 | Bad Request -- 	The request cannot be fulfilled due to bad syntax.
+401 | Unauthorized -- The end-point requested is not allowed.
+403 | Forbidden -- The end-point requested is not allowed.
+404 | Not Found -- The end-point requested could not be found.
+405 | Method Not Allowed -- You tried to access an end-point with an invalid method.
+406 | Not Acceptable -- You requested a format that isn't json.
+410 | Gone -- The request end-point requested has been removed from our servers.
+429 | Too Many Requests -- You're making too many requests! Slow down!
+500 | Internal Server Error -- We had a problem with our server. Try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+
+# Support
+
+- Send all support questions and issues to dev@pruvo.net
+- In your support inquiry, please be sure to include the request, response, and timestamp (UTC)
