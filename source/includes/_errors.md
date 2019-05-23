@@ -1,4 +1,4 @@
-# Errors Handling
+# Error Handling
 
 ## Error Response Structure
 
