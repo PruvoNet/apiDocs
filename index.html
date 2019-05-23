@@ -233,15 +233,15 @@
               </ul>
           </li>
           <li>
+            <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
+          </li>
+          <li>
             <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
           </li>
           <li>
             <a href="#end-points-overview" class="toc-h1 toc-link" data-title="End-points overview">End-points overview</a>
@@ -290,38 +290,6 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </aside>
 <h2 id='versioning'>Versioning</h2>
 <p>We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.</p>
-<h1 id='common'>Common</h1>
-<p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
-<h2 id='meal-plans'>Meal Plans</h2>
-<p>The <code>mealPlan</code> valid enum values are:</p>
-
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>no meal plan</td>
-</tr>
-<tr>
-<td>1</td>
-<td>breakfast</td>
-</tr>
-<tr>
-<td>2</td>
-<td>half board</td>
-</tr>
-<tr>
-<td>3</td>
-<td>all inclusive</td>
-</tr>
-<tr>
-<td>4</td>
-<td>full board</td>
-</tr>
-</tbody></table>
 <h1 id='authorization'>Authorization</h1>
 <p>This section describes the authorization process.</p>
 
@@ -374,11 +342,43 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td><code>1.0</code></td>
 </tr>
 </tbody></table>
+<h1 id='common'>Common</h1>
+<p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
+<h2 id='meal-plans'>Meal Plans</h2>
+<p>The <code>mealPlan</code> valid enum values are:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>no meal plan</td>
+</tr>
+<tr>
+<td>1</td>
+<td>breakfast</td>
+</tr>
+<tr>
+<td>2</td>
+<td>half board</td>
+</tr>
+<tr>
+<td>3</td>
+<td>all inclusive</td>
+</tr>
+<tr>
+<td>4</td>
+<td>full board</td>
+</tr>
+</tbody></table>
 <h1 id='end-points-overview'>End-points overview</h1>
 <p>This section describes push and pixel end-points which are currently supported by our API.</p>
 
 <p><strong>Production Endpoint</strong>
-<a href='https://www.pruvo.net/api/PushBookings'>www.pruvo.net/api/PushBookings/</a></p>
+<a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings</a></p>
 
 <h2 id='push-end-point'>Push End-point</h2>
 
@@ -398,10 +398,9 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -409,17 +408,19 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
   </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
+  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -472,7 +473,7 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </tr>
 <tr>
 <td><code>currencyCode</code></td>
-<td>ISO-4217 String</td>
+<td><a href="https://www.xe.com/iso4217.php" target="_blank">ISO-4217</a> String</td>
 <td>booking currency</td>
 <td>True</td>
 <td></td>
@@ -541,16 +542,16 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td>must be before <code>arrivalDate</code>. Omit if not a free cancellation reservation</td>
 </tr>
 <tr>
-<td><code>hotelName</code></td>
-<td>String</td>
-<td>hotel name</td>
+<td><code>mealPlan</code></td>
+<td>Number (<a href="#meal-plans">Enum</a>)</td>
+<td>included meal plan</td>
 <td>True</td>
 <td></td>
 </tr>
 <tr>
-<td><code>mealPlan</code></td>
-<td>Number (<a href="#meal-plans">Enum</a>)</td>
-<td>included meal plan</td>
+<td><code>hotelName</code></td>
+<td>String</td>
+<td>hotel name</td>
 <td>True</td>
 <td></td>
 </tr>
@@ -624,6 +625,13 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td>Optional</td>
 <td></td>
 </tr>
+<tr>
+<td><code>nationality</code></td>
+<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166-1 Alpha-2</a> String</td>
+<td>booker nationality</td>
+<td>Optional</td>
+<td>Recommended for better results</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -644,7 +652,7 @@ price and tax paramters should be given in the `currencyCode` currency value.
 <p>Request</p>
 </blockquote>
 
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api_version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;custom=aaa__sdfsdf_45&amp;price=45.6&amp;tax=12.6&amp;currencyCode=EUR&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;hotelName=Main%20Hotel%20Budapest&amp;mealPlan=1&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&amp;api_version=1.0&amp;uniqueId=jsdf354-sdf5-lasdfasdUi&amp;email=a%40a.com&amp;currencyCode=EUR&amp;price=45.6&amp;tax=12.6&amp;roomType=Double%20standard&amp;rooms=1&amp;persons=2&amp;children=1&amp;arrivalDate=05%2F25%2F2020&amp;departureDate=05%2F27%2F2020&amp;lastFreeCancelTime=05%2F21%2F2020&amp;mealPlan=1&amp;hotelName=Main%20Hotel%20Budapest&amp;address=24%20Main%20street&amp;city=Paris&amp;country=France&amp;latLong=32.78778%2C-79.93472&amp;manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&amp;thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&amp;hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&amp;hotelCode=a123456&amp;tripId=b654321&amp;custom=aaa__sdfsdf_45&amp;nationality=ES"</span>
 </code></pre>
 
 <blockquote>
@@ -656,10 +664,9 @@ price and tax paramters should be given in the `currencyCode` currency value.
   </span><span class="s2">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdf354-sdf5-lasdfasdUi"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a@a.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.6</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.6</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"roomType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double standard"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -667,17 +674,19 @@ price and tax paramters should be given in the `currencyCode` currency value.
   </span><span class="s2">"arrivalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/25/2020"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"departureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/27/2020"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastFreeCancelTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/21/2020"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mealPlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Hotel Budapest"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Main street"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"latLong"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.78778,-79.93472"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"manageLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/reservation?id=1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.my.site/myHotel.png"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hotelLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myBookingSite.com/myHotel.html"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="w">
+  </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -730,7 +739,7 @@ price and tax paramters should be given in the `currencyCode` currency value.
 </tr>
 <tr>
 <td><code>currencyCode</code></td>
-<td>ISO-4217 String</td>
+<td><a href="https://www.xe.com/iso4217.php" target="_blank">ISO-4217</a> String</td>
 <td>booking currency</td>
 <td>True</td>
 <td></td>
@@ -799,16 +808,16 @@ price and tax paramters should be given in the `currencyCode` currency value.
 <td>must be before <code>arrivalDate</code>. Omit if not a free cancellation reservation</td>
 </tr>
 <tr>
-<td><code>hotelName</code></td>
-<td>String</td>
-<td>hotel name</td>
+<td><code>mealPlan</code></td>
+<td>Number (<a href="#meal-plans">Enum</a>)</td>
+<td>included meal plan</td>
 <td>True</td>
 <td></td>
 </tr>
 <tr>
-<td><code>mealPlan</code></td>
-<td>Number (<a href="#meal-plans">Enum</a>)</td>
-<td>included meal plan</td>
+<td><code>hotelName</code></td>
+<td>String</td>
+<td>hotel name</td>
 <td>True</td>
 <td></td>
 </tr>
@@ -881,6 +890,13 @@ price and tax paramters should be given in the `currencyCode` currency value.
 <td>custom data (used only when required by pruvo)</td>
 <td>Optional</td>
 <td></td>
+</tr>
+<tr>
+<td><code>nationality</code></td>
+<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166-1 Alpha-2</a> String</td>
+<td>booker nationality</td>
+<td>Optional</td>
+<td>Recommended for better results</td>
 </tr>
 </tbody></table>
 
