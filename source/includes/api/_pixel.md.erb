@@ -3,7 +3,7 @@
 > Request
 
 ```shell
-curl "https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&api_version=1.0&uniqueId=jsdf354-sdf5-lasdfasdUi&email=a%40a.com&custom=aaa__sdfsdf_45&price=45.6&tax=12.6&currencyCode=EUR&roomType=Double%20standard&rooms=1&persons=2&children=1&arrivalDate=05%2F25%2F2020&departureDate=05%2F27%2F2020&lastFreeCancelTime=05%2F21%2F2020&hotelName=Main%20Hotel%20Budapest&mealPlan=1&address=24%20Main%20street&city=Paris&country=France&latLong=32.78778%2C-79.93472&thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&hotelCode=a123456&tripId=b654321"
+curl "https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-36d6-413c-aa86-46c1b108215d&api_version=1.0&uniqueId=jsdf354-sdf5-lasdfasdUi&email=a%40a.com&currencyCode=EUR&price=45.6&tax=12.6&roomType=Double%20standard&rooms=1&persons=2&children=1&arrivalDate=05%2F25%2F2020&departureDate=05%2F27%2F2020&lastFreeCancelTime=05%2F21%2F2020&mealPlan=1&hotelName=Main%20Hotel%20Budapest&address=24%20Main%20street&city=Paris&country=France&latLong=32.78778%2C-79.93472&manageLink=http%3A%2F%2FmyBookingSite.com%2Freservation%3Fid%3D1&thumbnail=http%3A%2F%2Fcdn.my.site%2FmyHotel.png&hotelLink=http%3A%2F%2FmyBookingSite.com%2FmyHotel.html&hotelCode=a123456&tripId=b654321&custom=aaa__sdfsdf_45&nationality=ES"
 ```
 
 > Request query params
@@ -14,10 +14,9 @@ curl "https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-
   "api_version": "1.0",
   "uniqueId": "jsdf354-sdf5-lasdfasdUi",
   "email": "a@a.com",
-  "custom": "aaa__sdfsdf_45",
+  "currencyCode": "EUR",
   "price": 45.6,
   "tax": 12.6,
-  "currencyCode": "EUR",
   "roomType": "Double standard",
   "rooms": 1,
   "persons": 2,
@@ -25,17 +24,19 @@ curl "https://www.pruvo.net/api/PushBookings/yourEndpoint?access_token=bf93c4e2-
   "arrivalDate": "05/25/2020",
   "departureDate": "05/27/2020",
   "lastFreeCancelTime": "05/21/2020",
-  "hotelName": "Main Hotel Budapest",
   "mealPlan": 1,
+  "hotelName": "Main Hotel Budapest",
   "address": "24 Main street",
   "city": "Paris",
   "country": "France",
   "latLong": "32.78778,-79.93472",
-  "thumbnail": "http://cdn.my.site/myHotel.png",
   "manageLink": "http://myBookingSite.com/reservation?id=1",
+  "thumbnail": "http://cdn.my.site/myHotel.png",
   "hotelLink": "http://myBookingSite.com/myHotel.html",
   "hotelCode": "a123456",
-  "tripId": "b654321"
+  "tripId": "b654321",
+  "custom": "aaa__sdfsdf_45",
+  "nationality": "ES"
 }
 ```
 
