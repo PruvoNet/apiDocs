@@ -219,7 +219,7 @@ html, body {
     display: block;
     $side-pad: $main-padding / 2 - 8px;
     padding: $side-pad $side-pad $side-pad;
-    //background-color: rgba($main-bg, 0.7);
+    background-color: rgba($main-bg, 0.7);
     transform-origin: 0 0;
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
@@ -236,7 +236,7 @@ html, body {
   opacity: 0.7;
   line-height: 16px;
   img {
-    height: 22px;
+    height: 16px;
     vertical-align: bottom;
   }
 
