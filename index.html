@@ -222,13 +222,13 @@
             <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
+                    <a href="#overview-abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
                   </li>
                   <li>
-                    <a href="#request-data" class="toc-h2 toc-link" data-title="Request data">Request data</a>
+                    <a href="#overview-request-data" class="toc-h2 toc-link" data-title="Request data">Request data</a>
                   </li>
                   <li>
-                    <a href="#versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
+                    <a href="#overview-versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
                   </li>
               </ul>
           </li>
@@ -239,7 +239,7 @@
             <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
+                    <a href="#common-meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
                   </li>
               </ul>
           </li>
@@ -247,10 +247,10 @@
             <a href="#end-points-overview" class="toc-h1 toc-link" data-title="End-points overview">End-points overview</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#push-end-point" class="toc-h2 toc-link" data-title="Push End-point">Push End-point</a>
+                    <a href="#end-points-overview-push-end-point" class="toc-h2 toc-link" data-title="Push End-point">Push End-point</a>
                   </li>
                   <li>
-                    <a href="#pixel-end-point" class="toc-h2 toc-link" data-title="Pixel End-point">Pixel End-point</a>
+                    <a href="#end-points-overview-pixel-end-point" class="toc-h2 toc-link" data-title="Pixel End-point">Pixel End-point</a>
                   </li>
               </ul>
           </li>
@@ -258,7 +258,7 @@
             <a href="#error-handling" class="toc-h1 toc-link" data-title="Error Handling">Error Handling</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#error-response-structure" class="toc-h2 toc-link" data-title="Error Response Structure">Error Response Structure</a>
+                    <a href="#error-handling-error-response-structure" class="toc-h2 toc-link" data-title="Error Response Structure">Error Response Structure</a>
                   </li>
               </ul>
           </li>
@@ -273,13 +273,13 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='overview'>Overview</h1><h2 id='abstract'>Abstract</h2>
+        <h1 id='overview'>Overview</h1><h2 id='overview-abstract'>Abstract</h2>
 <p>This documentation defines the specifications of an API who’s responsibility is to provide access to Pruvo’s unique price monitoring capabilities.</p>
 
 <p>The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.</p>
 
 <p>Current API version: 1.0</p>
-<h2 id='request-data'>Request data</h2>
+<h2 id='overview-request-data'>Request data</h2>
 <ul>
 <li>Every string passed to/from API has to be UTF-8 encoded</li>
 <li>Support for SNI SSL is required</li>
@@ -288,7 +288,7 @@
 <aside class="notice">
 Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM limit is 50.
 </aside>
-<h2 id='versioning'>Versioning</h2>
+<h2 id='overview-versioning'>Versioning</h2>
 <p>We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.</p>
 <h1 id='authorization'>Authorization</h1>
 <p>This section describes the authorization process.</p>
@@ -302,49 +302,43 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <th>Header key</th>
 <th>Header value</th>
 <th>Description</th>
-<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>Authorization</code></td>
 <td>Authorization Key</td>
 <td>Key provided by Pruvo</td>
-<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
 </tr>
 <tr>
 <td><code>API-Version</code></td>
 <td>Api Version</td>
 <td>PI Version to use</td>
-<td><code>1.0</code></td>
 </tr>
 </tbody></table>
 
-<p>If you prefer not to send the authorization data as headers, you can send them as query paramters:</p>
+<p>If you prefer not to send the authorization data as headers, you can send them as query parameters:</p>
 
 <table><thead>
 <tr>
 <th>Key</th>
 <th>Value</th>
 <th>Description</th>
-<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>access_token</code></td>
 <td>Authorization Key</td>
 <td>Key provided by Pruvo</td>
-<td><code>bf93c4e2-36d6-413c-aa86-46c1b108215d</code></td>
 </tr>
 <tr>
 <td><code>api_version</code></td>
 <td>Api Version</td>
 <td>PI Version to use</td>
-<td><code>1.0</code></td>
 </tr>
 </tbody></table>
 <h1 id='common'>Common</h1>
 <p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
-<h2 id='meal-plans'>Meal Plans</h2>
+<h2 id='common-meal-plans'>Meal Plans</h2>
 <p>The <code>mealPlan</code> valid enum values are:</p>
 
 <table><thead>
@@ -375,12 +369,13 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </tr>
 </tbody></table>
 <h1 id='end-points-overview'>End-points overview</h1>
+
 <p>This section describes push and pixel end-points which are currently supported by our API.</p>
 
 <p><strong>Production Endpoint</strong>
 <a href='https://www.pruvo.net/api/PushBookings'>https://www.pruvo.net/api/PushBookings</a></p>
 
-<h2 id='push-end-point'>Push End-point</h2>
+<h2 id='end-points-overview-push-end-point'>Push End-point</h2>
 
 <blockquote>
 <p>Request</p>
@@ -621,7 +616,7 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <tr>
 <td><code>custom</code></td>
 <td>String</td>
-<td>custom data (used only when required by pruvo)</td>
+<td>custom data (used only when required by Pruvo)</td>
 <td>Optional</td>
 <td></td>
 </tr>
@@ -639,14 +634,14 @@ A single request represent a single booking information. It can contain multiple
 </aside>
 
 <aside class="notice">
-price and tax paramters should be given in the `currencyCode` currency value.
+price and tax parameters should be given in the `currencyCode` currency value.
 </aside>
 
 <aside class="warning">
 (`persons` + `children`) / `rooms` must be a positive integer
 </aside>
 
-<h2 id='pixel-end-point'>Pixel End-point</h2>
+<h2 id='end-points-overview-pixel-end-point'>Pixel End-point</h2>
 
 <blockquote>
 <p>Request</p>
@@ -887,7 +882,7 @@ price and tax paramters should be given in the `currencyCode` currency value.
 <tr>
 <td><code>custom</code></td>
 <td>String</td>
-<td>custom data (used only when required by pruvo)</td>
+<td>custom data (used only when required by Pruvo)</td>
 <td>Optional</td>
 <td></td>
 </tr>
@@ -905,13 +900,13 @@ A single request represent a single booking information. It can contain multiple
 </aside>
 
 <aside class="notice">
-price and tax paramters should be given in the `currencyCode` currency value.
+price and tax parameters should be given in the `currencyCode` currency value.
 </aside>
 
 <aside class="warning">
 (`persons` + `children`) / `rooms` must be a positive integer
 </aside>
-<h1 id='error-handling'>Error Handling</h1><h2 id='error-response-structure'>Error Response Structure</h2>
+<h1 id='error-handling'>Error Handling</h1><h2 id='error-handling-error-response-structure'>Error Response Structure</h2>
 <p>All 400 errors encountered during request will render the same error structure.</p>
 
 <blockquote>
