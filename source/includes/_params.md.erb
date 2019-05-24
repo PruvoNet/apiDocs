@@ -23,14 +23,14 @@ Name | Format | Description | Mandatory | Comments
 `hotelLink` | Url String | link to hotel page in the site | Optional |
 `hotelCode` | String | the ean hotel code | Optional |
 `tripId` | String | the tripId provided to the user for this booking (used only when required by pruvo)  | Optional |
-`custom` | String | custom data (used only when required by pruvo)  | Optional |
+`custom` | String | custom data (used only when required by Pruvo)  | Optional |
 `nationality` | <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166-1 Alpha-2</a> String | booker nationality | Optional | Recommended for better results
 
 <aside class="notice">
 A single request represent a single booking information. It can contain multiple rooms, only if they are exactly identical
 </aside>
 <aside class="notice">
-price and tax paramters should be given in the `currencyCode` currency value.
+price and tax parameters should be given in the `currencyCode` currency value.
 </aside>
 <aside class="warning">
 (`persons` + `children`) / `rooms` must be a positive integer
