@@ -1,6 +1,6 @@
 # Api docs for Pruvo
 
-See <a href="https://developer.pruvo.com">https://developer.pruvo.com<a/> for the published version
+See <a href="https://developers.pruvo.com">https://developer.pruvo.com<a/> for the published version
 
 ## Development
 
