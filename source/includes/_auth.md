@@ -9,12 +9,12 @@ The following table details the required headers that must be sent with each req
 Header key | Header value | Description 
 ---------- | ------- | ------- 
 `Authorization` | Authorization Key | Key provided by Pruvo 
-`API-Version` | Api Version | PI Version to use 
+`API-Version` | Api Version | API Version to use 
 
 If you prefer not to send the authorization data as headers, you can send them as query parameters:
 
 Key | Value | Description 
 ---------- | ------- | ------- | ------- 
 `access_token` | Authorization Key | Key provided by Pruvo 
-`api_version` | Api Version | PI Version to use 
+`api_version` | Api Version | API Version to use 
 
