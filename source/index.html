@@ -85,11 +85,13 @@
   <body>
 
     <div class="protected">
+      <img src="./images/logo.png" style="max-height: 150px;margin: auto;display: block;"/>
       <div class="protected__alert" data-id="alert">You entered the wrong password</div>
       <div class="protected__content">
         <h1 class="protected__content__heading">You need a password to continue</h1>
         <input class="protected__content__input" data-id="password" type="password" placeholder="password"/>
         <button data-id="button" type="button" class="protected__content__btn">Continue</button>
+        <button data-id="request-button" type="button" class="protected__content__btn">Request access</button>
       </div>
     </div>
 
@@ -97,6 +99,7 @@
     <script type="text/javascript">
       "use strict"
       var button = document.querySelectorAll('[data-id="button"]')
+      var requestButton = document.querySelectorAll('[data-id="request-button"]')
       var password = document.querySelectorAll('[data-id="password"]')
       function login(secret) {
         var hash = sha1(secret)
@@ -124,6 +127,9 @@
       }
       button[0].addEventListener("click", function () {
         login(password[0].value)
+      })
+      requestButton[0].addEventListener("click", function () {
+        window.location = 'https://www.pruvo.net/business'
       })
       document.onkeydown = function (e) {
         e = e || window.event
