@@ -236,14 +236,6 @@
             <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
           </li>
           <li>
-            <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#common-meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#end-points-overview" class="toc-h1 toc-link" data-title="End-points overview">End-points overview</a>
               <ul class="toc-list-h2">
                   <li>
@@ -259,6 +251,28 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#error-handling-error-response-structure" class="toc-h2 toc-link" data-title="Error Response Structure">Error Response Structure</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#common" class="toc-h1 toc-link" data-title="Common">Common</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#common-meal-plans" class="toc-h2 toc-link" data-title="Meal Plans">Meal Plans</a>
+                  </li>
+                  <li>
+                    <a href="#common-personal-info" class="toc-h2 toc-link" data-title="Personal Info">Personal Info</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#common-personal-info-main-guest-info" class="toc-h3 toc-link" data-title="Main Guest info">Main Guest info</a>
+                          </li>
+                          <li>
+                            <a href="#common-personal-info-guest-general-info" class="toc-h3 toc-link" data-title="Guest General Info">Guest General Info</a>
+                          </li>
+                          <li>
+                            <a href="#common-personal-info-guest-title" class="toc-h3 toc-link" data-title="Guest Title">Guest Title</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -281,7 +295,7 @@
 
 <p>The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.</p>
 
-<p>Current API version: 1.0</p>
+<p>Current API version: 1.1</p>
 <h2 id='overview-request-data'>Request data</h2>
 <ul>
 <li>Every string passed to/from API has to be UTF-8 encoded</li>
@@ -339,38 +353,6 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td>API Version to use</td>
 </tr>
 </tbody></table>
-<h1 id='common'>Common</h1>
-<p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
-<h2 id='common-meal-plans'>Meal Plans</h2>
-<p>The <code>mealPlan</code> valid enum values are:</p>
-
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>no meal plan</td>
-</tr>
-<tr>
-<td>1</td>
-<td>breakfast</td>
-</tr>
-<tr>
-<td>2</td>
-<td>half board</td>
-</tr>
-<tr>
-<td>3</td>
-<td>all inclusive</td>
-</tr>
-<tr>
-<td>4</td>
-<td>full board</td>
-</tr>
-</tbody></table>
 <h1 id='end-points-overview'>End-points overview</h1>
 
 <p>This section describes push and pixel end-points which are currently supported by our API.</p>
@@ -418,7 +400,53 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
   </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a123456"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b654321"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa__sdfsdf_45"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="w">
+  </span><span class="s2">"personalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userRemarks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adjacent rooms"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1-32-1234567"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saget"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"barbara"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sandy"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"keren"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mira"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -541,7 +569,7 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </tr>
 <tr>
 <td><code>mealPlan</code></td>
-<td>Number (<a href="#common-meal-plans">Enum</a>)</td>
+<td><a href="#common-meal-plans">Enum</a></td>
 <td>included meal plan</td>
 <td>True</td>
 <td></td>
@@ -624,11 +652,11 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td></td>
 </tr>
 <tr>
-<td><code>nationality</code></td>
-<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166-1 Alpha-2</a> String</td>
-<td>guest nationality</td>
+<td><code>personalInfo</code></td>
+<td><a href="#common-personal-info">Object</a></td>
+<td>guest information</td>
 <td>Optional</td>
-<td>Recommended for better results</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -807,7 +835,7 @@ price and tax parameters should be given in the `currencyCode` currency value.
 </tr>
 <tr>
 <td><code>mealPlan</code></td>
-<td>Number (<a href="#common-meal-plans">Enum</a>)</td>
+<td><a href="#common-meal-plans">Enum</a></td>
 <td>included meal plan</td>
 <td>True</td>
 <td></td>
@@ -980,6 +1008,247 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <tr>
 <td>503</td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='common'>Common</h1>
+<p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
+<h2 id='common-meal-plans'>Meal Plans</h2>
+<p>The <code>mealPlan</code> valid enum values are:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>no meal plan</td>
+</tr>
+<tr>
+<td>1</td>
+<td>breakfast</td>
+</tr>
+<tr>
+<td>2</td>
+<td>half board</td>
+</tr>
+<tr>
+<td>3</td>
+<td>all inclusive</td>
+</tr>
+<tr>
+<td>4</td>
+<td>full board</td>
+</tr>
+</tbody></table>
+<h2 id='common-personal-info'>Personal Info</h2>
+<blockquote>
+<p>Body</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"userRemarks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adjacent rooms"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1-32-1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saget"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"barbara"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sandy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"keren"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mira"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The <code>personalInfo</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Mandatory</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>userRemarks</code></td>
+<td>String</td>
+<td>User provided requests to the hotel</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><a href="#common-personal-info-main-guest-info">Object</a></td>
+<td>main guest info</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td><a href="#common-personal-info-guest-general-info">Object[][]</a></td>
+<td>guests information (per room)</td>
+<td>Optional</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='common-personal-info-main-guest-info'>Main Guest info</h3>
+<blockquote>
+<p>Body</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1-32-1234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saget"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The <code>personalInfo.info</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Mandatory</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>country</code></td>
+<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166-1 Alpha-2</a> String</td>
+<td>guest nationality</td>
+<td>Optional</td>
+<td>Recommended for better results</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>String</td>
+<td>Guest phone number</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td>String</td>
+<td>Guest first name</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td>String</td>
+<td>Guest last name</td>
+<td>Optional</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='common-personal-info-guest-general-info'>Guest General Info</h3>
+<blockquote>
+<p>Body</p>
+</blockquote>
+<pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mira"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The <code>personalInfo.names</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Format</th>
+<th>Description</th>
+<th>Mandatory</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="#common-personal-info-guest-title">Enum</a></td>
+<td>guest sex</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><code>age</code></td>
+<td>Number</td>
+<td>Guest age</td>
+<td>Optional</td>
+<td>Must be provided if guest is a child (under 18)</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td>String</td>
+<td>Guest first name</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td>String</td>
+<td>Guest last name</td>
+<td>True</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='common-personal-info-guest-title'>Guest Title</h3>
+<p>The <code>personalInfo.names.title</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>M</td>
+<td>Male</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Female</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Child</td>
 </tr>
 </tbody></table>
 <h1 id='flow'>Flow</h1>
