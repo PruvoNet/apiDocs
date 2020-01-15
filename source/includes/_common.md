@@ -35,7 +35,7 @@ Name | Format | Description | Mandatory | Comments
 `firstName` | String | Guest first name | Optional |
 `lastName` | String | Guest last name | Optional |
 
-### Guest GeneralIinfo
+### Guest General Info
 
 The `personalInfo.names` object:
 
