@@ -6,7 +6,7 @@ This documentation defines the specifications of an API who’s responsibility i
 
 The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.
 
-Current API version: 1.0
+Current API version: 1.1
 
 ## Request data
 
