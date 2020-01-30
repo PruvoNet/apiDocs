@@ -2,21 +2,23 @@
 
 ## Abstract
 
-This documentation defines the specifications of an API who’s responsibility is to provide access to Pruvo’s unique price monitoring capabilities.
+This documentation defines the integration process with Pruvo's B2B repricing service.
 
-The API is designed as stateless and RESTful and responds only with JSON format. For security considerations, we require the use of SSL(HTTPS) only.
+## Service description
 
-Current API version: 1.1
+Pruvo's repricing service provides you access to Pruvo's powerful price monitoring capabilities.
+This will allow you to increase your revenue for already made reservations, by constantly looking for a better rate for them
+and replacing them with better priced reservations.
 
-## Request data
+The service consists of 3 parts:
+- Automatic import of all your reservations into Pruvo's price monitoring service.
+- Continues price monitoring of your reservations, using your own inventory and/or Pruov's inventory.
+- Automatic / Manual repricing of reservations with lower  
 
-- Every string passed to/from API has to be UTF-8 encoded
-- Support for SNI SSL is required
+## Integration Process
 
-<aside class="notice">
-Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM limit is 50.
-</aside>
+In order to integrate with you, Pruvo will need to have an access to your api (and it's docs).
+The access should be granted a special permission that allows read access to all of your reservations (for reservations importing and status check).
 
-## Versioning
-
-We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.
+Most of the integration is performed on Pruvo's side by integrating on our side to your api. 
+We will require that you will give us some extended api capabilities on your side, which will be detailed later on in these docs.
