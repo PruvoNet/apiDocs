@@ -1,0 +1,100 @@
+# Push End-point
+
+> Request
+
+```shell
+curl -d '{"uniqueId":"jsdf354-sdf5-lasdfasdUi","email":"a@a.com","custom":"aaa__sdfsdf_45","price":45.6,"tax":12.6,"currencyCode":"EUR","roomType":"Double standard","rooms":1,"persons":2,"children":1,"arrivalDate":"05/25/2020","departureDate":"05/27/2020","lastFreeCancelTime":"05/21/2020","hotelName":"Main Hotel Budapest","mealPlan":1,"address":"24 Main street","city":"Paris","country":"France","latLong":"32.78778,-79.93472","thumbnail":"http://cdn.my.site/myHotel.png","manageLink":"http://myBookingSite.com/reservation?id=1","hotelLink":"http://myBookingSite.com/myHotel.html","hotelCode":"a123456","tripId":"b654321"}'\
+ -H "Content-Type: application/json" -H "Authorization: bf93c4e2-36d6-413c-aa86-46c1b108215d" -H "API-Version	: 1.0" \
+ -X POST https://www.pruvo.net/api/PushBookings/yourEndpoint
+```
+
+> Request body
+
+```json-doc
+{
+  "uniqueId": "jsdf354-sdf5-lasdfasdUi",
+  "email": "a@a.com",
+  "currencyCode": "EUR",
+  "price": 45.6,
+  "tax": 12.6,
+  "roomType": "Double standard",
+  "rooms": 1,
+  "persons": 2,
+  "children": 1,
+  "arrivalDate": "05/25/2020",
+  "departureDate": "05/27/2020",
+  "lastFreeCancelTime": "05/21/2020",
+  "mealPlan": 1,
+  "hotelName": "Main Hotel Budapest",
+  "address": "24 Main street",
+  "city": "Paris",
+  "country": "France",
+  "latLong": "32.78778,-79.93472",
+  "manageLink": "http://myBookingSite.com/reservation?id=1",
+  "thumbnail": "http://cdn.my.site/myHotel.png",
+  "hotelLink": "http://myBookingSite.com/myHotel.html",
+  "hotelCode": "a123456",
+  "tripId": "b654321",
+  "custom": "aaa__sdfsdf_45",
+  "personalInfo": {
+    "userRemarks": "adjacent rooms",
+    "info": {
+      "country": "ES",
+      "phoneNumber": "+1-32-1234567",
+      "firstName": "Bob",
+      "lastName": "Saget"
+    },
+    "names": [
+      [
+        {
+          "title": "M",
+          "firstName": "john",
+          "lastName": "smith"
+        },
+        {
+          "title": "F",
+          "firstName": "barbara",
+          "lastName": "smith"
+        },
+        {
+          "title": "C",
+          "firstName": "sandy",
+          "lastName": "smith",
+          "age": 8
+        }
+      ],
+      [
+        {
+          "title": "M",
+          "firstName": "don",
+          "lastName": "page"
+        },
+        {
+          "title": "F",
+          "firstName": "keren",
+          "lastName": "page"
+        },
+        {
+          "title": "C",
+          "firstName": "mira",
+          "lastName": "page",
+          "age": 12
+        }
+      ]
+    ]
+  }
+}
+```
+
+Push end-point provides you with the ability to submit a booking for price monitoring.
+
+ | |
+---------- | -------  | -------
+**URL** | /yourEndpoint
+**SCHEMA** | HTTPS
+**METHOD** | POST
+
+
+**Accepted parameters**
+
+<%= partial "includes/pushApi/_params_post.md.erb" %>
