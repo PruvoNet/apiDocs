@@ -1,10 +1,12 @@
-# Repricing modes
+# Repricing Modes
 
 ## Automatic
 
-Pruvo will automatically perform the entire repricing flow
+Once a better rate is found for a monitored reservation, Pruvo will automatically re-book and notify your back office on the 
+made changes (using your back office update endpoint).
 
 ## Semi Automatic
 
-Pruvo will notify your agents on price drops.  
-An agent will access Pruvo's portal, where he can easily rebook the new reservation.
+Once a better rate is found for a monitored reservation, Pruvo will notify the assigned agent by email and require 
+their verification prior to the one click re-booking process.
+

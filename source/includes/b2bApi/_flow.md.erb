@@ -107,7 +107,7 @@ Consider the following scenario:
   Because Pruvo didn't get the chance to retrieve the docket, the only reference Pruvo has of the book request is the custom reference.  
   To achieve that, Pruvo needs to be able to obtain the status of a reservation using the custom reference.
 
-## Back office updates
+## Back Office Updates
 
 > Example Request
 
@@ -118,7 +118,8 @@ curl "https://your.api.domain/reprice?originalDocket=<original docket>&newDocket
 Once a repriced reservation is made, it is required to update the reservation information in your back office.  
 Pruvo will update you regarding the 
  with the new reservation data, and silently cancel the original reservation.
-The agent who made the original reservation should not be aware of the change.
+The agent who made the original reservation should not be aware of the change.  
+
 Pruvo will require a new endpoint, that we can call once the new reservation is confirmed, to let you know that a 
 repricing has occurred so you can take care of the change.
 
