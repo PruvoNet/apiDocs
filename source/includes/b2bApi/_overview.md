@@ -2,24 +2,30 @@
 
 ## Abstract
 
-This documentation defines the integration process with Pruvo's B2B repricing service.
+This documentation defines the integration process with Pruvo's repricing service.  
 
 ## Service description
+Pruvo developed an AI-Driven hotel price monitoring service that helps you increase your profitability by re-booking when the market price drops.
+The solution was developed while focusing on creating a simple to integrate solution which lowers the required development efforts from your end to the minimum.  
 
-Pruvo's repricing service provides you access to Pruvo's powerful price monitoring capabilities.  
-The service will allow you to increase your revenue for already made reservations, by constantly looking for a better rate 
-and replacing them with a better priced reservation.
+The service consists of the following steps:
 
-The service consists of 3 parts:
+ 1. **Import**: Automatic import of all your reservations into Pruvo's price monitoring service.
+ 2. **Price Monitoring**: Continues price monitoring of your reservations, using your own inventory and/or Pruov's inventory.
+ 3. **Rebooking (Automatic / Semi-Automatic)**: Once Pruvo finds a lower price for the exact room, the re-booking can be made automatically by Pruvo or semi-automatically by allowing you to verify the proposed change on Pruvo's platform (once the change is approved by you, the re-booking takes place automatically).
+ 4. **Back-office Booking Update**: After re-booking the exact same room using Pruvo's platform, the only thing
+  left is to update the original reservation with the new reservation data (It's important to allow a *silent* replacement so
+   the end customer won't be aware of the changes that were made).
+ 
+By completing the above steps, you can increase your profitability for already made reservations, by constantly looking for a better rate 
+and replacing them with a better priced reservations.
 
- * Automatic import of all your reservations into Pruvo's price monitoring service.
- * Continues price monitoring of your reservations, using your own inventory and/or Pruov's inventory.
- * Automatic / Manual repricing of reservations with lower price. 
 
 ## Integration Process
 
-In order to integrate with you, Pruvo will need to have an access to your api (and it's docs).  
-The access should be granted a special permission that allows read access to all of your reservations (for reservations importing and status check).
+Pruvo's solution is a SAAS solution that can be integrated with any platform.  
+In order to complete such an integration, Pruvo requires access to your API endpoints and documentation as well as special permissions to gain access to all hotel reservations.  
+Such permission will be used in order to allow Pruvo to import existing reservations, check status and monitor the market prices.
 
 Most of the integration is performed on Pruvo's side by integrating to your existing api.  
-We will require that you will give us some extended api capabilities on your side, which will be detailed later on in these docs.
+The ONLY requirement of integration on your end is extending your api capabilities to support the re-booking process.

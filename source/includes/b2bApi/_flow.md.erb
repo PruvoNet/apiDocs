@@ -2,7 +2,7 @@
 
 <%= image_tag "images/b2b-flow.png" %>
 
-## Import
+## Reservation Import
 
 > Example Request
 
@@ -10,26 +10,26 @@
 curl "https://your.api.domain/bookings_query?from=21/01/2020&to=21/01/2020"
 ```
 
-The first step to start the price monitoring is to import all reservations from your system into Pruvo.  
-The import is done on a daily basis (configurable), by querying your api for all reservations that were made in the previous day.  
+Pruvo will automatically import all the reservations from your system for price monitoring. 
+This will be performed on a daily basis (configurable), by querying your api for all reservations that were made in the previous day.  
 
 Pruvo requires an endpoint that will allow us to get all the reservations in your system, filtered by creation date.  
 The endpoint should return all data related to each booking, including but not limited to:
 
- * status
- * docket
- * booker custom reference (if applicable)
- * creation date
- * arrival date
- * departure date
- * meal plan
- * net price and currency
- * room types and number of rooms
- * guests information, including names, ages, gender and nationality
- * cancellation policy
- * internal hotel id
- * Guests special request
+ * Status
+ * Docket
+ * Booker custom reference (if applicable)
+ * Net price and currency
+ * Creation date
+ * Arrival date
+ * Departure date
+ * Cancellation policy
+ * Internal hotel id
  * Hotel customer info, as returned by the supplier
+ * (full) Room type and number of rooms
+ * Meal plan
+ * Guests information, including names, ages, gender and nationality
+ * Guests special request
 
 <aside class="notice">
 In case the query api endpoint doesn't return all the required data, we can use the later discussed status endpoint to retrieve the complete reservation information
@@ -39,11 +39,13 @@ In case the query api endpoint doesn't return all the required data, we can use 
 Our api credentials need to have the proper authorization to retrieve information on all the reservations in your system
 </aside>
 
-### Hotel Information
+<!---
+### *Hotel Database
 
-In order to obtain hotel information, Pruvo will need to gain access to your hotel inventory so we can cache it on our side
+In order to obtain hotel information, Pruvo needs to gain access to all your hotel inventory so we can cache it on our side
+-->
 
-## Status
+## Reservation Status Check
 
 > Example Request
 
@@ -51,10 +53,7 @@ In order to obtain hotel information, Pruvo will need to gain access to your hot
 curl "https://your.api.domain/booking?docket=<docket>"
 ```
 
-The second step of the price monitoring flow, is to check the status of a specific reservation, before we check for a better rate for it.  
-If the reservation is cancelled, we will automatically remove it from price monitoring.  
-
-Pruvo requires an endpoint that will allow us to get the status of a specific reservation by it's docket
+In order to avoid price monitoring of cancelled/modified reservations, Pruvo requires an endpoint that will allow us to get the status of a specific reservation by it's docket
 
 <aside class="notice">
 In case the import api endpoint doesn't return all the required data, we can use this endpoint to retrieve the complete reservation information
@@ -64,25 +63,28 @@ In case the import api endpoint doesn't return all the required data, we can use
 Our api credentials need to have the proper authorization to retrieve information on all the reservations in your system.
 </aside>
 
-## Price Check
+## Reservation Price Monitoring
 
-The third step of the price monitoring flow, is to check for a better rate for a reservation.  
-Pruvo will integrate with your existing api to perform the price check.
+In order to perform price checks over your providers, Pruvo requires an access to your api, with your **net rates**.
+Pruvo can also monitor prices on it's own inventory and marketplace.
 
 <aside class="notice">
-Our api credentials need to have the proper authorization to retrieve net prices for you inventory
+Our api credentials need to have the proper authorization to retrieve <b>net prices</b> for you inventory
 </aside>
 
-## Book
+<aside class="notice">
+Please provide the full room types, and not the aggregated type, as Pruvo has its own proprietary room matching algorithm
+</aside>
 
-The third step of the price monitoring flow, is to check for a better rate for a reservation.  
-Pruvo will integrate with your existing api to perform book phase.
+## Reservation Re-booking
+
+Once a better price is found, Pruvo will perform the book request using your api.  
 
 <aside class="notice">
 Our api credentials need to have the proper authorization to make a booking with no line of credit enforcement.
 </aside>
 
-### Duplicate reservation protection
+### Reservation Booking Error Handling
 
 > Example Request
 
@@ -90,8 +92,9 @@ Our api credentials need to have the proper authorization to make a booking with
 curl "https://your.api.domain/booking?custom_reference=<custom reference>"
 ```
 
-In order to prevent duplicate reservations during a failure in the book phase, Pruvo requires the ability to provide a custom reference in 
-the book phase, which can later be used in the status api to get the status of a reservation.reference
+Pruvo developed an error detection and resolution system which allows us to identify duplicate bookings and recuperate from failures.
+In order to be able to prevent errors and lower the fault rate to a minimum, Pruvo requires the ability to specify a custom reference in 
+the book phase, which can later be used in the status api to get the status of a reservation reference.
 
 Consider the following scenario:
 
@@ -101,10 +104,10 @@ Consider the following scenario:
     * The original reservation request didn't go though - Pruvo needs to call the book endpoint again
     * The original reservation request went though and the reservation was made - Pruvo needs to get the booking details and continue without making the book request again  
 * In order to decide which scenario to take, Pruvo needs to understand if the previous book request went through.  
-  Because Pruvo didn't get the chance to retrieve the docket, the only reference Pruvo has on the book request is the custom reference Pruvo passed.  
-  So to achieve that, Pruvo needs to be able to obtain the status of a reservation using the custom reference.
+  Because Pruvo didn't get the chance to retrieve the docket, the only reference Pruvo has of the book request is the custom reference.  
+  To achieve that, Pruvo needs to be able to obtain the status of a reservation using the custom reference.
 
-## Update & Cancel
+## Back office updates
 
 > Example Request
 
@@ -112,8 +115,20 @@ Consider the following scenario:
 curl "https://your.api.domain/reprice?originalDocket=<original docket>&newDocket=<new docket>"
 ```
 
-Once a repriced reservation was made, you will need to update your back office with the new reservation data, and 
-silently cancel the original reservation.
+Once a repriced reservation is made, it is required to update the reservation information in your back office.  
+Pruvo will update you regarding the 
+ with the new reservation data, and silently cancel the original reservation.
 The agent who made the original reservation should not be aware of the change.
 Pruvo will require a new endpoint, that we can call once the new reservation is confirmed, to let you know that a 
 repricing has occurred so you can take care of the change.
+
+## Requirements Summary
+
+Following is the full list of requirements that are needed on your side to complete the integration:
+
+* Api credentials access with privileged authorization
+* Reservation query endpoint with creation date filtered
+* Reservation status api endpoint
+* Custom booking reference input and query
+* Api endpoint to handle re-priced reservations on your back office
+
