@@ -13,6 +13,11 @@ trim_trailing_whitespace = true
 
 [*.rb]
 charset = utf-8
+trim_trailing_whitespace = false
+
+[*.erb]
+charset = utf-8
+trim_trailing_whitespace = false
 
 [*.md]
 trim_trailing_whitespace = false
