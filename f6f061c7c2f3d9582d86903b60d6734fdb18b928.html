@@ -1,0 +1,497 @@
+
+<!doctype html>
+<html>
+  <head>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Pruvo Api Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="f6f061c7c2f3d9582d86903b60d6734fdb18b928" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        MENU
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <a href="https://www.pruvo.com/" target="_blank">
+        <img src="images/logo.png" class="logo" alt="Logo" />
+      </a>
+        <div class="search">
+          <input type="search" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview-abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
+                  </li>
+                  <li>
+                    <a href="#overview-service-description" class="toc-h2 toc-link" data-title="Service description">Service description</a>
+                  </li>
+                  <li>
+                    <a href="#overview-integration-process" class="toc-h2 toc-link" data-title="Integration Process">Integration Process</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#flow" class="toc-h1 toc-link" data-title="Flow">Flow</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#flow-reservation-import" class="toc-h2 toc-link" data-title="Reservation Import">Reservation Import</a>
+                  </li>
+                  <li>
+                    <a href="#flow-reservation-status-check" class="toc-h2 toc-link" data-title="Reservation Status Check">Reservation Status Check</a>
+                  </li>
+                  <li>
+                    <a href="#flow-reservation-price-monitoring" class="toc-h2 toc-link" data-title="Reservation Price Monitoring">Reservation Price Monitoring</a>
+                  </li>
+                  <li>
+                    <a href="#flow-reservation-re-booking" class="toc-h2 toc-link" data-title="Reservation Re-booking">Reservation Re-booking</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#flow-reservation-re-booking-reservation-booking-error-handling" class="toc-h3 toc-link" data-title="Reservation Booking Error Handling">Reservation Booking Error Handling</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#flow-back-office-updates" class="toc-h2 toc-link" data-title="Back Office Updates">Back Office Updates</a>
+                  </li>
+                  <li>
+                    <a href="#flow-requirements-summary" class="toc-h2 toc-link" data-title="Requirements Summary">Requirements Summary</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#repricing-modes" class="toc-h1 toc-link" data-title="Repricing Modes">Repricing Modes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#repricing-modes-automatic" class="toc-h2 toc-link" data-title="Automatic">Automatic</a>
+                  </li>
+                  <li>
+                    <a href="#repricing-modes-semi-automatic" class="toc-h2 toc-link" data-title="Semi Automatic">Semi Automatic</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#repricing-flow-example" class="toc-h1 toc-link" data-title="Repricing Flow Example">Repricing Flow Example</a>
+          </li>
+          <li>
+            <a href="#support" class="toc-h1 toc-link" data-title="Support">Support</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='overview'>Overview</h1><h2 id='overview-abstract'>Abstract</h2>
+<p>This documentation defines the integration process with Pruvo&#39;s repricing service.  </p>
+<h2 id='overview-service-description'>Service description</h2>
+<p>Pruvo developed an AI-Driven hotel price monitoring service that helps you increase your profitability by re-booking when the market price drops.
+The solution was developed while focusing on creating a simple to integrate solution which lowers the required development efforts from your end to the minimum.  </p>
+
+<p>The service consists of the following steps:</p>
+
+<ol>
+<li><strong>Import</strong>: Automatic import of all your reservations into Pruvo&#39;s price monitoring service.</li>
+<li><strong>Price Monitoring</strong>: Continues price monitoring of your reservations, using your own inventory and/or Pruov&#39;s inventory.</li>
+<li><strong>Rebooking (Automatic / Semi-Automatic)</strong>: Once Pruvo finds a lower price for the exact room, the re-booking can be made automatically by Pruvo or semi-automatically by allowing you to verify the proposed change on Pruvo&#39;s platform (once the change is approved by you, the re-booking takes place automatically).</li>
+<li><strong>Back-office Booking Update</strong>: After re-booking the exact same room using Pruvo&#39;s platform, the only thing
+left is to update the original reservation with the new reservation data (It&#39;s important to allow a <em>silent</em> replacement so
+the end customer won&#39;t be aware of the changes that were made).</li>
+</ol>
+
+<p>By completing the above steps, you can increase your profitability for already made reservations, by constantly looking for a better rate 
+and replacing them with a better priced reservations.</p>
+<h2 id='overview-integration-process'>Integration Process</h2>
+<p>Pruvo&#39;s solution is a SAAS solution that can be integrated with any platform.<br>
+In order to complete such an integration, Pruvo requires access to your API endpoints and documentation as well as special permissions to gain access to all hotel reservations.<br>
+Such permission will be used in order to allow Pruvo to import existing reservations, check status and monitor the market prices.</p>
+
+<p>Most of the integration is performed on Pruvo&#39;s side by integrating to your existing api.<br>
+The ONLY requirement of integration on your end is extending your api capabilities to support the re-booking process.</p>
+
+<h1 id='flow'>Flow</h1>
+
+<p style="text-align: center;">
+<img src="images/b2b-flow.png" class="flow-img" alt="B2b flow" />
+</p>
+
+<h2 id='flow-reservation-import'>Reservation Import</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://your.api.domain/bookings_query?from=21/01/2020&amp;to=21/01/2020"</span>
+</code></pre>
+
+<p>Pruvo will automatically import all the reservations from your system for price monitoring. 
+This will be performed on a daily basis (configurable), by querying your api for all reservations that were made in the previous day.  </p>
+
+<p>Pruvo requires an endpoint that will allow us to get all the reservations in your system, filtered by creation date.<br>
+The endpoint should return all data related to each booking, including but not limited to:</p>
+
+<ul>
+<li>Status</li>
+<li>Docket</li>
+<li>Booker custom reference (if applicable)</li>
+<li>Net price and currency</li>
+<li>Creation date</li>
+<li>Arrival date</li>
+<li>Departure date</li>
+<li>Cancellation policy</li>
+<li>Internal hotel id</li>
+<li>Hotel customer info, as returned by the supplier</li>
+<li>(full) Room type and number of rooms</li>
+<li>Meal plan</li>
+<li>Guests information, including names, ages, gender and nationality</li>
+<li>Guests special request</li>
+</ul>
+
+<aside class="notice">
+In case the query api endpoint doesn't return all the required data, we can use the later discussed status endpoint to retrieve the complete reservation information
+</aside>
+
+<aside class="notice">
+Our api credentials need to have the proper authorization to retrieve information on all the reservations in your system
+</aside>
+
+<!---
+### *Hotel Database
+
+In order to obtain hotel information, Pruvo needs to gain access to all your hotel inventory so we can cache it on our side
+-->
+
+<h2 id='flow-reservation-status-check'>Reservation Status Check</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://your.api.domain/booking?docket=&lt;docket&gt;"</span>
+</code></pre>
+
+<p>In order to avoid price monitoring of cancelled/modified reservations, Pruvo requires an endpoint that will allow us to get the status of a specific reservation by it&#39;s docket</p>
+
+<aside class="notice">
+In case the import api endpoint doesn't return all the required data, we can use this endpoint to retrieve the complete reservation information
+</aside>
+
+<aside class="notice">
+Our api credentials need to have the proper authorization to retrieve information on all the reservations in your system.
+</aside>
+
+<h2 id='flow-reservation-price-monitoring'>Reservation Price Monitoring</h2>
+
+<p>In order to perform price checks over your providers, Pruvo requires an access to your api, with your <strong>net rates</strong>.
+Pruvo can also monitor prices on it&#39;s own inventory and marketplace.</p>
+
+<aside class="notice">
+Our api credentials need to have the proper authorization to retrieve <b>net prices</b> for you inventory
+</aside>
+
+<aside class="notice">
+Please provide the full room types, and not the aggregated type, as Pruvo has its own proprietary room matching algorithm
+</aside>
+
+<h2 id='flow-reservation-re-booking'>Reservation Re-booking</h2>
+
+<p>Once a better price is found, Pruvo will perform the book request using your api.  </p>
+
+<aside class="notice">
+Our api credentials need to have the proper authorization to make a booking with no line of credit enforcement.
+</aside>
+
+<h3 id='flow-reservation-re-booking-reservation-booking-error-handling'>Reservation Booking Error Handling</h3>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://your.api.domain/booking?custom_reference=&lt;custom reference&gt;"</span>
+</code></pre>
+
+<p>Pruvo developed an error detection and resolution system which allows us to identify duplicate bookings and recuperate from failures.
+In order to be able to prevent errors and lower the fault rate to a minimum, Pruvo requires the ability to specify a custom reference in 
+the book phase, which can later be used in the status api to get the status of a reservation reference.</p>
+
+<p>Consider the following scenario:</p>
+
+<ul>
+<li>Pruvo performs a book request, whilst proving custom reference = FOO</li>
+<li>Before Pruvo gets a chance to get a response (with the new docket), something goes wrong (server crash, network issues, etc. on either side)</li>
+<li>Pruvo will retry the booking request. There are 2 scenarios here:
+
+<ul>
+<li>The original reservation request didn&#39;t go though - Pruvo needs to call the book endpoint again</li>
+<li>The original reservation request went though and the reservation was made - Pruvo needs to get the booking details and continue without making the book request again<br></li>
+</ul></li>
+<li>In order to decide which scenario to take, Pruvo needs to understand if the previous book request went through.<br>
+Because Pruvo didn&#39;t get the chance to retrieve the docket, the only reference Pruvo has of the book request is the custom reference.<br>
+To achieve that, Pruvo needs to be able to obtain the status of a reservation using the custom reference.</li>
+</ul>
+
+<h2 id='flow-back-office-updates'>Back Office Updates</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://your.api.domain/reprice?originalDocket=&lt;original docket&gt;&amp;newDocket=&lt;new docket&gt;"</span>
+</code></pre>
+
+<p>Once a repriced reservation is made, it is required to update the reservation information in your back office.<br>
+Pruvo will update you regarding the 
+ with the new reservation data, and silently cancel the original reservation.
+The agent who made the original reservation should not be aware of the change.  </p>
+
+<p>Pruvo will require a new endpoint, that we can call once the new reservation is confirmed, to let you know that a 
+repricing has occurred so you can take care of the change.</p>
+
+<h2 id='flow-requirements-summary'>Requirements Summary</h2>
+
+<p>Following is the full list of requirements that are needed on your side to complete the integration:</p>
+
+<ul>
+<li>Api credentials access with privileged authorization</li>
+<li>Reservation query endpoint with creation date filtered</li>
+<li>Reservation status api endpoint</li>
+<li>Custom booking reference input and query</li>
+<li>Api endpoint to handle re-priced reservations on your back office</li>
+</ul>
+
+<h1 id='repricing-modes'>Repricing Modes</h1><h2 id='repricing-modes-automatic'>Automatic</h2>
+<p>Once a better rate is found for a monitored reservation, Pruvo will automatically re-book and notify your back office on the 
+made changes (using your back office update endpoint).</p>
+<h2 id='repricing-modes-semi-automatic'>Semi Automatic</h2>
+<p>Once a better rate is found for a monitored reservation, Pruvo will notify the assigned agent by email and require 
+their verification prior to the one click re-booking process.</p>
+
+<h1 id='repricing-flow-example'>Repricing Flow Example</h1>
+
+<p>Please find an example of the typical flow used by most of our customers 
+(in case of special integration request, the current flow can be modified according to the desired scenario)</p>
+
+<ol>
+<li>An agent makes a reservation on your system</li>
+<li>Pruvo automatically imports that reservation</li>
+<li>Pruvo price monitoring starts</li>
+<li>Pruvo checks the status of the reservation to make sure it is still valid</li>
+<li>Pruvo checks the current price of the reservation using your api</li>
+<li>A better price is found - Pruvo validates the rate</li>
+<li>Pruvo makes a new reservation using your book api</li>
+<li>Pruvo notifies your back office on the change using the back office endpoint</li>
+<li>You change the reservation data with the newly crated reservation</li>
+<li>You silently cancel the original reservation</li>
+<li>You have the same exact reservation, with a lower price</li>
+</ol>
+
+<h1 id='support'>Support</h1>
+
+<p>Please Send all support questions and issues to <a href="mailto:dev@pruvo.net">dev@pruvo.net</a></p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

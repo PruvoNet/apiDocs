@@ -233,6 +233,9 @@
               </ul>
           </li>
           <li>
+            <a href="#flow" class="toc-h1 toc-link" data-title="Flow">Flow</a>
+          </li>
+          <li>
             <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
           </li>
           <li>
@@ -277,9 +280,6 @@
               </ul>
           </li>
           <li>
-            <a href="#flow" class="toc-h1 toc-link" data-title="Flow">Flow</a>
-          </li>
-          <li>
             <a href="#support" class="toc-h1 toc-link" data-title="Support">Support</a>
           </li>
       </ul>
@@ -307,7 +307,13 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 </aside>
 <h2 id='overview-versioning'>Versioning</h2>
 <p>We may update the API without increasing the version number (i.e 2.1 2.2 etc…) for NON-BREAKING changes.</p>
+
+<h1 id='flow'>Flow</h1>
+
+<p><img src="images/push-flow.png" alt="Push flow" /></p>
+
 <h1 id='authorization'>Authorization</h1>
+
 <p>This section describes the authorization process.</p>
 
 <p>Every request to any available endpoint requires authorization. To get the authorization credentials you need an active partner account registered within Pruvo’s systems.</p>
@@ -353,6 +359,7 @@ Every partner is subjected to a QPM(Queries Per Minute) limitation. Current QPM 
 <td>API Version to use</td>
 </tr>
 </tbody></table>
+
 <h1 id='end-points-overview'>End-points overview</h1>
 
 <p>This section describes push and pixel end-points which are currently supported by our API.</p>
@@ -937,6 +944,7 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <aside class="warning">
 (`persons` + `children`) / `rooms` must be a positive integer
 </aside>
+
 <h1 id='error-handling'>Error Handling</h1><h2 id='error-handling-error-response-structure'>Error Response Structure</h2>
 <p>All 400 errors encountered during request will render the same error structure.</p>
 
@@ -1010,9 +1018,13 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+
 <h1 id='common'>Common</h1>
+
 <p>This section describes commonly accepted parameters, formats and structures which are used later in individual endpoints overviews.</p>
+
 <h2 id='common-meal-plans'>Meal Plans</h2>
+
 <p>The <code>mealPlan</code> valid enum values are:</p>
 
 <table><thead>
@@ -1042,10 +1054,13 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td>full board</td>
 </tr>
 </tbody></table>
+
 <h2 id='common-personal-info'>Personal Info</h2>
+
 <blockquote>
 <p>Body</p>
 </blockquote>
+
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"userRemarks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adjacent rooms"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1094,6 +1109,7 @@ price and tax parameters should be given in the `currencyCode` currency value.
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <p>The <code>personalInfo</code> object:</p>
 
 <table><thead>
@@ -1127,10 +1143,13 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td></td>
 </tr>
 </tbody></table>
+
 <h3 id='common-personal-info-main-guest-info'>Main Guest info</h3>
+
 <blockquote>
 <p>Body</p>
 </blockquote>
+
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1-32-1234567"</span><span class="p">,</span><span class="w">
@@ -1138,6 +1157,7 @@ price and tax parameters should be given in the `currencyCode` currency value.
   </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saget"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <p>The <code>personalInfo.info</code> object:</p>
 
 <table><thead>
@@ -1178,10 +1198,13 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td></td>
 </tr>
 </tbody></table>
+
 <h3 id='common-personal-info-guest-general-info'>Guest General Info</h3>
+
 <blockquote>
 <p>Body</p>
 </blockquote>
+
 <pre class="highlight json-doc tab-json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mira"</span><span class="p">,</span><span class="w">
@@ -1189,6 +1212,7 @@ price and tax parameters should be given in the `currencyCode` currency value.
   </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <p>The <code>personalInfo.names</code> object:</p>
 
 <table><thead>
@@ -1229,7 +1253,9 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td></td>
 </tr>
 </tbody></table>
+
 <h3 id='common-personal-info-guest-title'>Guest Title</h3>
+
 <p>The <code>personalInfo.names.title</code> object:</p>
 
 <table><thead>
@@ -1251,9 +1277,9 @@ price and tax parameters should be given in the `currencyCode` currency value.
 <td>Child</td>
 </tr>
 </tbody></table>
-<h1 id='flow'>Flow</h1>
-<p><img src="images/flow.png" alt="Flow" /></p>
+
 <h1 id='support'>Support</h1>
+
 <ul>
 <li>Send all support questions and issues to <a href="mailto:dev@pruvo.net">dev@pruvo.net</a></li>
 <li>In your support inquiry, please be sure to include the request, response, and timestamp (UTC)</li>
